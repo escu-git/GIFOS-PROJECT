@@ -1,4 +1,98 @@
-header {
-  background-color: green;
+*
+::before
+::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.headerContainer {
+  position: relative;
+  border-top: 5px #572EE5 solid;
+  height: 95px;
+}
+
+.headerContainer:after {
+  content: "";
+  visibility: hidden;
+  font-size: 0px;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.headerContainer img {
+  width: 48.8px;
+  height: 48.8px;
+  margin: 2.8% 0 1.4% 5.9%;
+  float: left;
+}
+
+.headerContainer .menuContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: right;
+}
+
+.headerContainer .menuContainer .popUp {
+  height: 0px;
+  visibility: hidden;
+}
+
+.headerContainer .menuContainer .popUp li {
+  color: #572EE5;
+  list-style: none;
+}
+
+.headerContainer .menuContainer label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 4.3%;
+}
+
+.headerContainer .menuContainer label span {
+  position: relative;
+  display: block;
+  visibility: visible;
+  background-color: #572EE5;
+  width: 14px;
+  height: 2px;
+  margin: 2px;
+}
+
+.headerContainer .menuContainer .menuInput {
+  display: none;
+}
+
+.headerContainer .menuContainer .menuInput:checked ~ .popUp {
+  visibility: visible;
+  position: relative;
+}
+
+.headerContainer .menuContainer .menuInput:checked ~ label span:nth-child(1) {
+  background-color: violet;
+}
+
+.headerContainer .menuContainer .menuInput:checked ~ label span:nth-child(2) {
+  background-color: violet;
+}
+
+.headerContainer .menuContainer .menuInput:checked ~ label span:nth-child(3) {
+  background-color: violet;
 }
 /*# sourceMappingURL=styles.css.map */

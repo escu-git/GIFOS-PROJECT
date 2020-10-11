@@ -3,34 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 
-    <title>GIFOS</title>
+    <title>GIFOS - ESCUDERO</title>
 </head>
 <body>
-    <header class="headerContainer">
+    <header class="headerContainer clearfix">
         <img src="assets/logo-mobile.svg" alt="Logo GIFOS">
-        <div class="menuContainer">
-            <div class="hamburgerMenu">
-                <nav>
-                    <li>Modo nocturno</li>
-                    <li>Favoritos</li>
-                    <li>Mis gifos</li>
-                </nav>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+        <nav class="menuContainer">
+            <input type="checkbox" id="menu" class="menuInput">
+                <label for="menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            <ul class="popUp">
+                <li>Modo nocturno</li>
+                <li>Favoritos</li>
+                <li>Mis gifos</li>
+            </ul>
+        </nav>
     </header>
     <section class="introGifos">
-        
-
+        <h1>Inspírate, busca, guarda, y crea los mejores gifos</h1>
+        <div>
+            <img src="assets/ilustra_header.svg" alt="Comunidad GIFOS">
+            <div class="search">
+                <input type="text" id="search" placeholder="Busca GIFOS y más">
+            </div>
+        </div>
+        <div>
+            <h2>Trending</h2>
+            <h4>Reactions, Entertainment, Sports, Stickers, Artists</h3>
+        </div>
     </section>
-    <section class="trending">
-
+    <section class="trendingContainer">
+        <div class="trending">
+            <h2>Trending GIFOS</h2>
+            <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+        </div>
+        <div class="carrouselContainer"></div>
     </section>
     <footer class="mobileFooter">
-
+        <div>
+            <h6>Compartir en:</h5>
+                <img src="assets/icon_facebook.svg" alt="Facebook">
+                <img src="assets/icon-twitter.svg" alt="Twitter">
+                <img src="assets/icon_instagram.svg" alt="Instagram">
+        </div>
     </footer>
 </body>
 </html>

@@ -1,0 +1,60 @@
+.headerContainer {
+    position:relative;
+    border-top: 5px $lightPurple solid;
+    height:95px;
+    &:after {
+        @include clearFix;
+    }
+    img {
+        width:48.8px;
+        height:48.8px;
+        margin:2.8% 0 1.4% 5.9%;
+        float:left;
+    }
+    .menuContainer {
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        float:right;
+            .popUp {
+                height:0px;
+                visibility:hidden;
+                li {
+                    color: $lightPurple;
+                    list-style:none;
+                }
+            }
+        
+        label{
+            position:absolute;
+            top:0; right:0;
+            margin-top:4.3%;
+            span {
+                position:relative;
+                display:block;
+                visibility: visible;
+                background-color:$lightPurple;
+                width:14px;
+                height:2px;
+                margin:2px;
+            }
+        }
+        .menuInput {
+            display:none;
+            &:checked ~ .popUp {
+                visibility:visible;
+                position:relative;
+            }
+            &:checked ~ label span:nth-child(1) {
+                background-color:violet;
+            }
+            &:checked ~ label span:nth-child(2) {
+                background-color:violet;
+            }
+            &:checked ~ label span:nth-child(3) {
+                background-color:violet;
+            }
+        }
+
+    }
+}
