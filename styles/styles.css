@@ -12,6 +12,12 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
+  margin-top: 0;
+}
+
+body h1, body h2, body h3, body h4, body h6 {
+  text-align: center;
+  color: #572EE5;
 }
 
 .headerContainer {
@@ -94,5 +100,58 @@ body {
 
 .headerContainer .menuContainer .menuInput:checked ~ label span:nth-child(3) {
   background-color: violet;
+}
+
+.introGifos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.introGifos h1 {
+  width: 286px;
+  font-size: 1.56rem;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+.introGifos h1 span {
+  color: #5ED7C6;
+  text-transform: uppercase;
+}
+
+.introGifos img {
+  width: 278px;
+  height: 130px;
+}
+
+.introGifos #search {
+  font-size: 1rem;
+  width: 334px;
+  height: 50px;
+  border-radius: 27px;
+  border-color: #572EE5;
+}
+
+.trendingContainer {
+  background-color: #F3F5F8;
+}
+
+.mobileFooter {
+  height: 196px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 /*# sourceMappingURL=styles.css.map */

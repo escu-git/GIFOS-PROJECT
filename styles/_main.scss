@@ -1,0 +1,37 @@
+.introGifos {
+    display:flex;
+    flex-wrap:nowrap;
+    flex-direction:column;
+    align-items:center;
+    h1 {
+        width:286px;
+        font-size: 1.56rem;
+        line-height:33px;
+        font-weight:700;
+        span {
+            color:$aquaGreen;
+            text-transform: uppercase;
+        }
+    }
+    img {
+        width:278px;
+        height:130px;
+    }
+    #search {
+        font-size: 1rem;
+        width:334px;
+        height:50px;
+        border-radius:27px;
+        border-color: $lightPurple;
+    }
+}
+.trendingContainer {
+    background-color:$backgroundColor;
+}
+.mobileFooter {
+    height:196px;
+    display:flex;
+    flex-wrap:nowrap;
+    
+
+}

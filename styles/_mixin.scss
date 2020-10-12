@@ -6,3 +6,7 @@
     height:0;
     clear:both;
 }
+@mixin body {
+    font-family:$normalFont;
+    margin-top:0;
+}

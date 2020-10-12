@@ -8,6 +8,10 @@ html {
     font-size:16px;
 }
 body {
-    font-family:$normalFont;
+    @include body;
 
+    h1, h2, h3, h4, h6 {
+        text-align:$centered;
+        color:$lightPurple;
+    }
 }
