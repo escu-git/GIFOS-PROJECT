@@ -10,3 +10,7 @@
     font-family:$normalFont;
     margin-top:0;
 }
+@mixin footerText {
+    color:black;
+    font-size:0.93rem;
+}

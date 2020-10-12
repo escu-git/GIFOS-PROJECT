@@ -147,11 +147,40 @@ body h1, body h2, body h3, body h4, body h6 {
 }
 
 .mobileFooter {
+  font-family: "Roboto", sans-serif;
+  color: black;
   height: 196px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mobileFooter .socialMedia {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mobileFooter h6 {
+  color: black;
+  font-size: 0.93rem;
+}
+
+.mobileFooter .copyright {
+  color: black;
+  font-size: 0.93rem;
+  text-transform: capitalize;
+}
+
+.mobileFooter .copyright span {
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=styles.css.map */

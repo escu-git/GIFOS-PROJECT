@@ -29,9 +29,25 @@
     background-color:$backgroundColor;
 }
 .mobileFooter {
+    font-family: $robotoFont;
+    color:black;
     height:196px;
     display:flex;
     flex-wrap:nowrap;
-    
-
+    flex-direction:column;
+    justify-content:center;
+    .socialMedia {
+        margin:0 auto;
+        text-align:center;
+    }
+    h6{
+        @include footerText;
+    }    
+    .copyright {
+        @include footerText;
+        text-transform: capitalize;
+        span {
+            text-transform: uppercase;
+        }
+    }
 }
