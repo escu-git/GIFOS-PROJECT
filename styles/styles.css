@@ -69,6 +69,7 @@ body h1, body h2, body h3, body h4, body h6 {
 }
 
 .headerContainer .topMenu .hamMenu .popUp li {
+  color: white;
   list-style: none;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
@@ -258,15 +259,15 @@ body h1, body h2, body h3, body h4, body h6 {
   text-transform: uppercase;
 }
 
-body.lightMode body {
-  background-color: white;
+.darkMode {
+  background-color: #37383C;
 }
 
-body.lightMode .popUp li {
+.darkMode h1, .darkMode h2, .darkMode h3, .darkMode h6 {
   color: white;
 }
 
-.darkMode {
-  background-color: black;
+.darkMode h1 span {
+  color: #5ED7C6;
 }
 /*# sourceMappingURL=styles.css.map */
