@@ -263,11 +263,36 @@ body h1, body h2, body h3, body h4, body h6 {
   background-color: #37383C;
 }
 
-.darkMode h1, .darkMode h2, .darkMode h3, .darkMode h6 {
+.darkMode h1, .darkMode h2, .darkMode h3, .darkMode h4, .darkMode h6 {
   color: white;
 }
 
 .darkMode h1 span {
   color: #5ED7C6;
+}
+
+.darkMode .topMenu .menuInput:checked ~ .popUp {
+  background-color: black;
+}
+
+.darkMode .topMenu .menuInput:checked ~ label span:nth-child(1) {
+  background-color: white;
+}
+
+.darkMode .topMenu .menuInput:checked ~ label span:nth-child(3) {
+  background-color: white;
+}
+
+.darkMode .introGifos #search {
+  border-color: white;
+  background-color: transparent;
+}
+
+.darkMode .trending {
+  background-color: #222326;
+}
+
+.darkMode footer .copyright {
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */
