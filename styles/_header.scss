@@ -1,33 +1,49 @@
 .headerContainer {
-    position:relative;
-    border-top: 5px $lightPurple solid;
+    display:block;
     height:95px;
     &:after {
         @include clearFix;
     }
-    img {
+    .mainLogo {
         width:48.8px;
         height:48.8px;
         margin:2.8% 0 1.4% 5.9%;
         float:left;
     }
-    .menuContainer {
-        display:flex;
-        justify-content: space-around;
-        align-items: center;
+    .topMenu {
         float:right;
-            .popUp {
-                height:0px;
-                visibility:hidden;
-                li {
-                    color: $lightPurple;
-                    list-style:none;
+        position:absolute;
+        top:0; right:0;
+        width:100%;
+            .hamMenu{
+                position:relative;
+                width:100%;
+                .popUp {
+                    position:absolute;
+                    width:100%;
+                    top:80px;
+                    height:0px;
+                    overflow:hidden;
+                    visibility:hidden;
+                    padding:0px;
+                    margin:0px;
+                    transition:$menuTransition;
+                    li {
+                        list-style:none;
+                        transition:$menuTransition;
+                    }
+                    .line{
+                        width:41px;
+                        border:1px solid white;
+                        margin:0 auto;
+                        transition:$menuTransition;
+                    }
                 }
             }
         
         label{
             position:absolute;
-            top:0; right:0;
+            top:12px; right:26px;
             margin-top:4.3%;
             span {
                 position:relative;
@@ -37,24 +53,37 @@
                 width:14px;
                 height:2px;
                 margin:2px;
+                transition: $menuTransition;
             }
         }
         .menuInput {
             display:none;
             &:checked ~ .popUp {
                 visibility:visible;
-                position:relative;
+                background-color: $purpleBack;
+                width:100%;
+                height:484px;
+                display:flex;
+                flex-direction:column;
+                flex-wrap:nowrap;
+                text-align:center;
+                justify-content:space-around;
+                align-content: flex-start;
             }
             &:checked ~ label span:nth-child(1) {
-                background-color:violet;
+                background-color:$lightPurple;
+                transform:rotate(45deg) translateX(3.5px);
+                transition:$menuTransition;
             }
             &:checked ~ label span:nth-child(2) {
-                background-color:violet;
+                display:none;
+                transition: $menuTransition;
             }
             &:checked ~ label span:nth-child(3) {
-                background-color:violet;
+                background-color:$lightPurple;
+                transform:rotate(-45deg) translateX(3px) translateY(1px);
+                transition: $menuTransition;
             }
         }
-
     }
 }

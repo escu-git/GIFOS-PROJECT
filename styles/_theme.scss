@@ -1,0 +1,14 @@
+//LIGHTMODE
+body.lightMode{
+    body{
+        background-color:$white;
+    }
+    .popUp li {
+        color:white;
+    }
+}
+
+//DARK MODE
+.darkMode{
+    background-color:black;
+}

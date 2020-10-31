@@ -10,21 +10,25 @@
 
     <title>GIFOS - ESCUDERO</title>
 </head>
-<body>
+<body id="body">
     <header class="headerContainer clearfix">
-        <img src="assets/logo-mobile.svg" alt="Logo GIFOS">
-        <nav class="menuContainer">
-            <input type="checkbox" id="menu" class="menuInput">
-                <label for="menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            <ul class="popUp">
-                <li>Modo nocturno</li>
-                <li>Favoritos</li>
-                <li>Mis gifos</li>
-            </ul>
+        <div class="mainLogo"></div>
+        <nav class="topMenu">
+            <div class="hamMenu">
+                <input type="checkbox" id="menu" class="menuInput">
+                    <label for="menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                <ul class="popUp">
+                    <li id="darkMode">Modo nocturno</li>
+                    <span class="line"></span>
+                    <li>Favoritos</li>
+                    <span class="line"></span>
+                    <li>Mis gifos</li>
+                </ul>
+            </div>
         </nav>
     </header>
 <main>
@@ -34,6 +38,23 @@
         <input type="text" id="search" placeholder="Busca GIFOS y más" style=>
         <h2>Trending</h2>
         <h4>Reactions, Entertainment, Sports, Stickers, Artists</h3>
+    </section>
+    <section class="mascotas">
+        <h2>Mascotas</h2>
+        <div class="mascotasContainer">
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+            <div class="imgBox"></div>
+        </div> 
     </section>
     <section class="trendingContainer">
         <div class="trending">
@@ -46,7 +67,7 @@
 </main>
     <footer class="mobileFooter">
         <div>
-            <h6>Compartir en:</h5>
+            <h6>Compartir en:</h6>
             <div class="socialMedia">
                 <img src="assets/icon_facebook.svg" alt="Facebook">
                 <img src="assets/icon-twitter.svg" alt="Twitter">
@@ -55,5 +76,6 @@
             <h6 class="copyright">&#169; <span>gifos 2020</span> all rights reserved</h6>
         </div>
     </footer>
+    <script src="script/script.js"></script>
 </body>
 </html>
