@@ -10,7 +10,6 @@ logoTheme.src = "assets/logo-mobile.svg";
 let body = document.getElementById("body");
 mainLogo.appendChild(logoTheme);
 
-
 darkModeBtn.addEventListener("click",(event)=>{
     let themeToggle = document.getElementById("body");
     themeToggle.classList.toggle("darkMode");
@@ -25,3 +24,5 @@ darkModeBtn.addEventListener("click",(event)=>{
         diurnoLi.innerHTML = "Modo Nocturno";
     }
 })
+
+//

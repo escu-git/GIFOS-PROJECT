@@ -88,3 +88,24 @@
         }
     }
 }
+@media (min-width:768px){
+    .headerContainer{
+        .hamMenu{
+            height:95px;
+            visibility:visible;
+            overflow:visible;
+            .popUp{
+                position:relative;
+                display:block;
+                width:100%;
+                height:95px;
+                visibility: visible;
+                overflow:visible;
+                background-color:blue;
+            }
+            label span{
+                display:none;
+            }
+        }
+    }
+}
