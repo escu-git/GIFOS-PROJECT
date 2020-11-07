@@ -4,18 +4,15 @@
         flex-direction:column;
         flex-wrap:nowrap;
         align-content:center;
-        img{
-            width:28px; height:21px;
-        }
     }
 }
 .favGifs{
     display:flex;
-    flex-direction:column;
     flex-wrap:wrap;
+    justify-content:space-around;
     .favgif{
-        width:156px;
-        width:120px;
-        border: black;
+        width:148px; height:120px;
+        border: 1px solid blue;
+        margin:25px 0 25px 0;
     }
 }
