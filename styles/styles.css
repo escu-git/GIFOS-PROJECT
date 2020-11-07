@@ -60,8 +60,6 @@ body h1, body h2, body h3, body h4, body h6 {
   width: 100%;
   top: 80px;
   height: 0px;
-  overflow: hidden;
-  visibility: hidden;
   padding: 0px;
   margin: 0px;
   -webkit-transition: all 0.5s ease-in;
@@ -147,26 +145,6 @@ body h1, body h2, body h3, body h4, body h6 {
           transform: rotate(-45deg) translateX(3px) translateY(1px);
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
-}
-
-@media (min-width: 768px) {
-  .headerContainer .hamMenu {
-    height: 95px;
-    visibility: visible;
-    overflow: visible;
-  }
-  .headerContainer .hamMenu .popUp {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 95px;
-    visibility: visible;
-    overflow: visible;
-    background-color: blue;
-  }
-  .headerContainer .hamMenu label span {
-    display: none;
-  }
 }
 
 .introGifos {
@@ -353,10 +331,41 @@ body h1, body h2, body h3, body h4, body h6 {
   text-transform: uppercase;
 }
 
-@media (min-width: 768px) {
-  .introGifos h1 {
-    width: 64.9%;
-  }
+.favorites .favoritesTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.favorites .favoritesTitle img {
+  width: 28px;
+  height: 21px;
+}
+
+.favGifs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.favGifs .favgif {
+  width: 156px;
+  width: 120px;
+  border: black;
 }
 
 .darkMode {
@@ -394,5 +403,38 @@ body h1, body h2, body h3, body h4, body h6 {
 
 .darkMode footer .copyright {
   color: white;
+}
+
+@media screen and (min-width: 769px) {
+  .headerContainer .hamMenu {
+    height: 95px;
+    visibility: visible;
+    overflow: visible;
+  }
+  .headerContainer .hamMenu .topMenu {
+    position: relative;
+    display: block;
+    height: 95px;
+  }
+  .headerContainer .hamMenu .topMenu .popUp {
+    position: relative;
+    display: block;
+    height: 95px;
+    top: 0px;
+  }
+  .headerContainer .hamMenu .topMenu .popUp li {
+    display: inline-block;
+    -webkit-transition: none;
+    transition: none;
+  }
+  .headerContainer .hamMenu label span {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .introGifos h1 {
+    width: 64.9%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

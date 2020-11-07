@@ -1,0 +1,21 @@
+.favorites{
+    .favoritesTitle{
+        display:flex;
+        flex-direction:column;
+        flex-wrap:nowrap;
+        align-content:center;
+        img{
+            width:28px; height:21px;
+        }
+    }
+}
+.favGifs{
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    .favgif{
+        width:156px;
+        width:120px;
+        border: black;
+    }
+}

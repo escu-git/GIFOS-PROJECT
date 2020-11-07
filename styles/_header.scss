@@ -23,8 +23,6 @@
                     width:100%;
                     top:80px;
                     height:0px;
-                    overflow:hidden;
-                    visibility:hidden;
                     padding:0px;
                     margin:0px;
                     transition:$menuTransition;
@@ -84,27 +82,6 @@
                 background-color:$lightPurple;
                 transform:rotate(-45deg) translateX(3px) translateY(1px);
                 transition: $menuTransition;
-            }
-        }
-    }
-}
-@media (min-width:768px){
-    .headerContainer{
-        .hamMenu{
-            height:95px;
-            visibility:visible;
-            overflow:visible;
-            .popUp{
-                position:relative;
-                display:block;
-                width:100%;
-                height:95px;
-                visibility: visible;
-                overflow:visible;
-                background-color:blue;
-            }
-            label span{
-                display:none;
             }
         }
     }
