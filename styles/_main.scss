@@ -27,10 +27,26 @@
 }
 .trendingContainer {
     background-color:$backgroundColor;
+    .carrouselContainer{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+        .trendingGif{
+            width:243px;
+            height:187px;
+        }
+        .divCarrousel{
+            display:block;
+            width:calc(100% / 3 - 3%);
+            height: 150px;
+            border:1px solid black;
+        }
+    }
 }
-.mascotas{
+.searches{
     display:block;
-    .mascotasContainer {
+    .searchContainer {
         display:flex;
         flex-wrap:wrap;
         flex-direction:row;
@@ -45,6 +61,7 @@
         }
     }
 }
+
 .mobileFooter {
     font-family: $robotoFont;
     color:black;

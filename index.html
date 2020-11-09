@@ -39,19 +39,9 @@
         <h2>Trending</h2>
         <h4>Reactions, Entertainment, Sports, Stickers, Artists</h3>
     </section>
-    <section class="mascotas">
+    <section id="searches" class="searches">
         <h2>Mascotas</h2>
-        <div class="mascotasContainer">
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
-            <div class="imgBox"></div>
+        <div class="seachContainer">
             <div class="imgBox"></div>
             <div class="imgBox"></div>
         </div> 
@@ -61,7 +51,12 @@
             <h2>Trending GIFOS</h2>
             <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
         </div>
-        <div class="carrouselContainer" id="trending">
+        <div class="carrouselContainer" id="trendingDiv">
+            <img src="assets/button-slider-left.svg" alt="Left">
+            <div class="divCarrousel" id="div1"></div>
+            <div class="divCarrousel" id="div2"></div>
+            <div class="divCarrousel" id="div3"></div>
+            <img src="assets/Button-Slider-right.svg" alt="Right">
         </div>
     </section>
 </main>
@@ -76,6 +71,8 @@
             <h6 class="copyright">&#169; <span>gifos 2020</span> all rights reserved</h6>
         </div>
     </footer>
+    <script src="script/trending.js"></script>
+    <script src="script/functions.js"></script>
     <script src="script/script.js"></script>
 </body>
 </html>
