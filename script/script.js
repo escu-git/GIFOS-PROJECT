@@ -8,7 +8,8 @@ let newGif = document.createElement('img');
 
 inputSearch.addEventListener("keyup", (event)=>{
     if(event.keyCode === 13){ //Activa búsqueda con enter.
-        printSearch(buscarGifs());//Busca en API e imprime en DOM.
+        divSearch.childRemove(newDiv);
+        printSearch(buscarGifs(inputSearch.value));//Busca en API e imprime en DOM.
         inputSearch.value = ""; //Vaciar casilla de búsqueda.
     }
 });
@@ -22,16 +23,19 @@ async function buscarGifs(valorDeInput){
 }
 //////////////PRINT CONTENT IN DOM FUNCTION
 let imprimirDOM= (imagen)=>{
+    let newDiv = document.createElement('div');
+    let newGif = document.createElement('img');
     newGif.src = imagen;
-    divSearch.appendChild(newDiv.appendChild(newGif));
+    newDiv.appendChild(newGif)
+    divSearch.appendChild(newDiv)
 }
+let printSearchArray = []; //Array con contenido de API
 async function printSearch(fnBuscar) {
-    let printSearchArray = []; //Array con contenido de API
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
-        printSearchArray.push(array);
-    })
-    printSearchArray.forEach(imagenes=>{
-        imprimirDOM(imagenes.images.downsized.url)
+    printSearchArray.push(array);
+        printSearchArray.forEach(imagenes=>{
+            imprimirDOM(imagenes.images.downsized.url)
+            })
     })
 };
