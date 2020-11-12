@@ -1,0 +1,18 @@
+*
+::before
+::after {
+    box-sizing:border-box;
+    text-decoration:none;
+}
+html {
+    font-size:16px;
+    border-top: 5px $lightPurple solid;
+}
+body {
+    @include body;
+
+    h1, h2, h3, h4, h6 {
+        text-align:$centered;
+        color:$lightPurple;
+    }
+}

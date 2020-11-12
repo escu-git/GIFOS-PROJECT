@@ -1,0 +1,133 @@
+.introGifos {
+    display:flex;
+    flex-wrap:nowrap;
+    flex-direction:column;
+    align-items:center;
+    h1 {
+        width:286px;
+        font-size: 1.56rem;
+        line-height:33px;
+        font-weight:700;
+        span {
+            color:$aquaGreen;
+            text-transform: uppercase;
+        }
+    }
+    img {
+        width:278px;
+        height:130px;
+    }
+    #search {
+        font-size: 1rem;
+        width:325px; max-width:334px;
+        height:50px;
+        border-radius:27px;
+        border-color: $lightPurple;
+    }
+}
+.trendingContainer {
+    background-color:$backgroundColor;
+    .carrouselContainer{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+        .trendingGif{
+            width:243px;
+            height:187px;
+        }
+        .divCarrousel{
+            display:block;
+            width:calc(100% / 3 - 3%);
+            height: 150px;
+            border:1px solid black;
+        }
+    }
+}
+.searches{
+    display:block;
+    .searchContainer {
+        display:flex;
+        flex-wrap:wrap;
+        flex-direction:row;
+        justify-content:space-around;
+        padding:0px 21px 0px 21px;
+        .imgBox {
+            display:block;
+            width:41.6%;
+            height:120px;
+            border:solid black 2px;;
+            margin: 25px 0px 25px 0px;
+        }
+    }
+}
+
+.mobileFooter {
+    font-family: $robotoFont;
+    color:black;
+    height:196px;
+    display:flex;
+    flex-wrap:nowrap;
+    flex-direction:column;
+    justify-content:center;
+    .socialMedia {
+        margin:0 auto;
+        text-align:center;
+    }
+    h6{
+        @include footerText;
+    }    
+    .copyright {
+        @include footerText;
+        text-transform: capitalize;
+        span {
+            text-transform: uppercase;
+        }
+    }
+}
+//MIS GIFOS
+.createGifos{
+    display:block;
+    width:100%;
+    .mainScreen{
+        margin:auto;
+        border:1px solid $lightPurple;
+        width:47.8%;height:390px;
+    }
+    .numbers{
+        display:flex;
+        margin:0 auto;
+        width:200px;
+        flex-direction:row;
+        flex-wrap: nowrap;
+        justify-content:space-between;
+        .number{
+            font-size:1.125rem;
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            color:$lightPurple;
+            width:32px; height:32px;
+            border:1px solid $lightPurple;
+            border-radius:100px;
+        }
+    }
+    span{
+        display:block;
+        margin:auto;
+        width:55%; height:1%;
+        border:1px solid $lightPurple;
+        background-color:$lightPurple;
+    }
+    .comenzar{
+        width:127px; height:50px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color:$lightPurple;
+        margin:auto;
+        border:1px solid $lightPurple;
+        border-radius: 25px;
+        text-transform:uppercase;
+    }
+}
