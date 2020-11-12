@@ -8,7 +8,6 @@ let newGif = document.createElement('img');
 
 inputSearch.addEventListener("keyup", (event)=>{
     if(event.keyCode === 13){ //Activa búsqueda con enter.
-        divSearch.childRemove(newDiv);
         printSearch(buscarGifs(inputSearch.value));//Busca en API e imprime en DOM.
         inputSearch.value = ""; //Vaciar casilla de búsqueda.
     }
