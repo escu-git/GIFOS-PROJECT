@@ -100,6 +100,7 @@ body h1, body h2, body h3, body h4, body h6 {
 .headerContainer .topMenu .hamMenu .popUp li {
   color: white;
   list-style: none;
+  display: none;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
@@ -108,6 +109,7 @@ body h1, body h2, body h3, body h4, body h6 {
   width: 41px;
   border: 1px solid white;
   margin: 0 auto;
+  display: none;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
@@ -174,6 +176,19 @@ body h1, body h2, body h3, body h4, body h6 {
   background-color: #572EE5;
   -webkit-transform: rotate(-45deg) translateX(3px) translateY(1px);
           transform: rotate(-45deg) translateX(3px) translateY(1px);
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+.headerContainer .topMenu .menuInput:checked ~ .popUp li {
+  display: block;
+}
+
+.headerContainer .topMenu .menuInput:checked ~ .popUp line {
+  display: block;
+  width: 41px;
+  border: 1px solid white;
+  margin: 0 auto;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
