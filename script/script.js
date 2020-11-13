@@ -8,6 +8,7 @@ let newGif = document.createElement('img');
 
 inputSearch.addEventListener("keyup", (event)=>{
     if(event.keyCode === 13){ //Activa búsqueda con enter.
+        inputSearch.removeChild(divSearch)
         printSearch(buscarGifs(inputSearch.value));//Busca en API e imprime en DOM.
         inputSearch.value = ""; //Vaciar casilla de búsqueda.
     }
@@ -16,7 +17,6 @@ inputSearch.addEventListener("keyup", (event)=>{
 //////////////SEARCH GIFS FUNCTION
 async function buscarGifs(valorDeInput){
     let urlSearch = `https://api.giphy.com/v1/gifs/search?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u&q=${valorDeInput}&limit=25&offset=0&rating=g&lang=en`;
-
     let response = await fetch(urlSearch);
     return response.json();
 }
