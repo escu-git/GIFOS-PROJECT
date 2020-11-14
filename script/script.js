@@ -1,16 +1,15 @@
 //SEARCH SECTION:
 const divSearch = document.getElementById("searchContainer");
 const inputSearch = document.getElementById("search");
+const newDiv = document.createElement('div');
 
-//CREATE ELEMENTS:
-let newDiv = document.createElement('div');
-let newGif = document.createElement('img');
+
 
 inputSearch.addEventListener("keyup", (event)=>{
     if(event.keyCode === 13){ //Activa búsqueda con enter.
-        inputSearch.removeChild(divSearch)
         printSearch(buscarGifs(inputSearch.value));//Busca en API e imprime en DOM.
-        inputSearch.value = ""; //Vaciar casilla de búsqueda.
+    inputSearch.value = ""; //Vaciar casilla de búsqueda.
+        
     }
 });
 
@@ -22,14 +21,22 @@ async function buscarGifs(valorDeInput){
 }
 //////////////PRINT CONTENT IN DOM FUNCTION
 let imprimirDOM= (imagen)=>{
-    let newDiv = document.createElement('div');
+    //CREATE ELEMENTS:
     let newGif = document.createElement('img');
+    //Añadir atributos:
     newGif.src = imagen;
+    newGif.classList.add("imgBox");
+    newDiv.classList.add("newDiv");
+    //Mandar al DOM
     newDiv.appendChild(newGif)
-    divSearch.appendChild(newDiv)
+    divSearch.appendChild(newDiv);
 }
-let printSearchArray = []; //Array con contenido de API
+
 async function printSearch(fnBuscar) {
+    let printSearchArray = []; //Array con contenido de API
+    if(printSearchArray.length > 0){
+        printSearchArray=[];
+    }
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
     printSearchArray.push(array);
