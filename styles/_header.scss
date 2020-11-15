@@ -25,7 +25,7 @@
                     height:0px;
                     padding:0px;
                     margin:0px;
-                    transition:$menuTransition;
+                    transition:$menuTransition2;
                     li {
                         color:$white;
                         list-style:none;
@@ -33,15 +33,14 @@
                         transition:$menuTransition;
                     }
                     .line{
+                        display:none;
                         width:41px;
                         border:1px solid white;
                         margin:0 auto;
-                        display:none;
                         transition:$menuTransition;
                     }
                 }
             }
-        
         label{
             position:absolute;
             top:12px; right:26px;
@@ -88,12 +87,13 @@
             &:checked ~ .popUp li{
                 display: block;
             }
-            &:checked ~ .popUp line {
+            &:checked ~ .popUp .line {
                 display: block;
                 width:41px;
                 border:1px solid white;
                 margin:0 auto;
                 transition:$menuTransition;
+                opacity:50%;
             }
         }
     }

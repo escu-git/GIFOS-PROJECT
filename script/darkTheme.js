@@ -11,7 +11,9 @@ mainLogo.appendChild(logoTheme);
 
 darkModeBtn.addEventListener("click",(event)=>{
     let themeToggle = document.getElementById("body");
+    let html = document.getElementById("html");
     themeToggle.classList.toggle("darkMode");
+    html.classList.toggle("darkHTML")
     //Cambio de logo según theme
     let diurnoLi = document.getElementById("darkMode");
     if(themeToggle.classList.contains("darkMode")){
