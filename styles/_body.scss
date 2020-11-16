@@ -9,9 +9,6 @@ html {
     border-top: 5px $lightPurple solid;
     width:100vw;
 }
-.darkHTML{
-    border-top: 5px black solid;
-}
 body {
     @include body;
     width:100%;

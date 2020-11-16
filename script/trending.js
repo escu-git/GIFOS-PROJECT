@@ -1,25 +1,35 @@
 //VARIABLES
 const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u";
 
-let trendingGifs = "https://api.giphy.com/v1/gifs/trending?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u&limit=25&rating=g"
+let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
 
-fetch(trendingGifs)
-.then(response => response.json())
-.then(arrayGif => arrayGif.data)
-.then(arrayArmado =>{
-    arrayArmado.forEach(x=>{
-        arrayTrending.push(x);
-        // let img = x.images.preview_webp.url;
-        // let createImg = document.createElement("img");
-        // createImg.src = img;
-        // createImg.classList.add("trendingGif")
-        // let DOM = document.getElementById("trendingDiv");
-        // DOM.appendChild(createImg);
-    })
-})
-.catch(error =>{
-    console.log("Console log error");
-})
+async function trending(){
+let apiTrending = await fetch(trendingUrl);
+return apiTrending.json();
+}
+
+async function showTrending(trending){
+    await trending
+}
+
+showTrending(trending());
+//fetch(trendingGifs)
+// .then(response => response.json())
+// .then(arrayGif => arrayGif.data)
+// .then(arrayArmado =>{
+//     arrayArmado.forEach(x=>{
+//         arrayTrending.push(x);
+//         // let img = x.images.preview_webp.url;
+//         // let createImg = document.createElement("img");
+//         // createImg.src = img;
+//         // createImg.classList.add("trendingGif")
+//         // let DOM = document.getElementById("trendingDiv");
+//         // DOM.appendChild(createImg);
+//     })
+// })
+// .catch(error =>{
+//     console.log("Console log error");
+// })
 
 //*ARRAY
 arrayTrending = [];

@@ -43,10 +43,6 @@ html {
   width: 100vw;
 }
 
-.darkHTML {
-  border-top: 5px black solid;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   width: 100%;
@@ -80,125 +76,117 @@ body h1, body h2, body h3, body h4, body h6 {
   float: left;
 }
 
-.headerContainer .topMenu {
-  float: right;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-}
-
-.headerContainer .topMenu .hamMenu {
-  position: relative;
-  width: 100%;
-}
-
-.headerContainer .topMenu .hamMenu .popUp {
-  position: absolute;
-  width: 100%;
-  top: 80px;
-  height: 0px;
-  padding: 0px;
-  margin: 0px;
-  -webkit-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;
-}
-
-.headerContainer .topMenu .hamMenu .popUp li {
-  color: white;
-  list-style: none;
-  display: none;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu .hamMenu .popUp .line {
-  display: none;
-  width: 41px;
-  border: 1px solid white;
-  margin: 0 auto;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu label {
-  position: absolute;
-  top: 12px;
-  right: 26px;
-  margin-top: 4.3%;
-}
-
-.headerContainer .topMenu label span {
-  position: relative;
-  display: block;
-  visibility: visible;
-  background-color: #572EE5;
-  width: 14px;
-  height: 2px;
-  margin: 2px;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu .menuInput {
-  display: none;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ .popUp {
-  visibility: visible;
-  background-color: rgba(87, 46, 229, 0.9);
-  width: 100%;
-  height: 484px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  text-align: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ label span:nth-child(1) {
-  background-color: #572EE5;
-  -webkit-transform: rotate(45deg) translateX(3.5px);
-          transform: rotate(45deg) translateX(3.5px);
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ label span:nth-child(2) {
-  display: none;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ label span:nth-child(3) {
-  background-color: #572EE5;
-  -webkit-transform: rotate(-45deg) translateX(3px) translateY(1px);
-          transform: rotate(-45deg) translateX(3px) translateY(1px);
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ .popUp li {
-  display: block;
-}
-
-.headerContainer .topMenu .menuInput:checked ~ .popUp .line {
-  display: block;
-  width: 41px;
-  border: 1px solid white;
-  margin: 0 auto;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-  opacity: 50%;
+@media screen and (max-width: 768px) {
+  .headerContainer .topMenu {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .headerContainer .topMenu .hamMenu {
+    position: relative;
+    width: 100%;
+  }
+  .headerContainer .topMenu .hamMenu .popUp {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+  }
+  .headerContainer .topMenu .hamMenu .popUp li {
+    color: white;
+    list-style: none;
+    display: none;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .topMenu .hamMenu .popUp .line {
+    display: none;
+    width: 41px;
+    border: 1px solid white;
+    margin: 0 auto;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .topMenu .hamMenu .popUp img {
+    display: none;
+  }
+  .headerContainer .topMenu label {
+    position: absolute;
+    top: 12px;
+    right: 26px;
+    margin-top: 4.3%;
+  }
+  .headerContainer .topMenu label span {
+    position: relative;
+    display: block;
+    visibility: visible;
+    background-color: #572EE5;
+    width: 14px;
+    height: 2px;
+    margin: 2px;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .menuInput {
+    display: none;
+  }
+  .headerContainer .menuInput:checked ~ .popUp {
+    visibility: visible;
+    background-color: rgba(87, 46, 229, 0.9);
+    width: 100%;
+    height: 484px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    text-align: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+  }
+  .headerContainer .menuInput:checked ~ label span:nth-child(1) {
+    background-color: #572EE5;
+    -webkit-transform: rotate(45deg) translateX(3.5px);
+            transform: rotate(45deg) translateX(3.5px);
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .menuInput:checked ~ label span:nth-child(2) {
+    display: none;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .menuInput:checked ~ label span:nth-child(3) {
+    background-color: #572EE5;
+    -webkit-transform: rotate(-45deg) translateX(3px) translateY(1px);
+            transform: rotate(-45deg) translateX(3px) translateY(1px);
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+  }
+  .headerContainer .menuInput:checked ~ .popUp li {
+    display: block;
+  }
+  .headerContainer .menuInput:checked ~ .popUp .line {
+    display: block;
+    width: 41px;
+    border: 1px solid white;
+    margin: 0 auto;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+    opacity: 50%;
+  }
 }
 
 .introGifos {
@@ -445,18 +433,66 @@ footer .copyright span {
   color: white;
 }
 
+.inputJS {
+  height: 200px;
+  background-color: red;
+}
+
+.darkHTML {
+  border-top: 5px black solid;
+}
+
 @media screen and (min-width: 769px) {
-  header .topMenu .hamMenu .popUp li {
-    color: black;
-    display: inline;
+  .topMenu {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
   }
-  header .topMenu label span {
+  .topMenu .hamMenu {
+    width: auto;
+    float: right;
+  }
+  .topMenu .hamMenu input {
     display: none;
   }
-  .introGifos h1 {
+  .topMenu .hamMenu .popUp {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    width: 100%;
+    padding: 0;
+    margin-top: 30px;
+  }
+  .topMenu .hamMenu .popUp .menuLi {
+    color: #572EE5;
+    font-weight: bold;
+    list-style: none;
+    display: inline;
+    margin: auto 21px;
+    cursor: pointer;
+  }
+  .topMenu .hamMenu .popUp .line {
+    display: none;
+  }
+  .topMenu .hamMenu .popUp img {
+    display: inline;
+    margin: 0 50px 0 42px;
+    cursor: pointer;
+  }
+  .topMenu label {
+    display: none;
+  }
+  .topMenu label span {
+    display: none;
+  }
+  .topMenu .introGifos h1 {
     width: 64.9%;
   }
-  footer {
+  .topMenu footer {
     display: -ms-grid;
     display: grid;
     height: 116px;
@@ -469,7 +505,7 @@ footer .copyright span {
         -ms-flex-align: center;
             align-items: center;
   }
-  footer .socialMedia {
+  .topMenu footer .socialMedia {
     margin: 0px;
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -487,12 +523,12 @@ footer .copyright span {
     height: 100%;
     padding-left: 116px;
   }
-  footer .socialMedia h6, footer .socialMedia img {
+  .topMenu footer .socialMedia h6, .topMenu footer .socialMedia img {
     margin: 0px;
     height: 20px;
     margin-right: 20px;
   }
-  footer .copyright {
+  .topMenu footer .copyright {
     margin: 0px;
     -ms-grid-row: 1;
     grid-row: 1;

@@ -1,21 +1,44 @@
 @media screen and (min-width:769px){
-    //HEADER
-        header{
-            .topMenu{
-                .hamMenu{
-                    .popUp{
-                        li{
-                            color:black;
-                            display:inline;
-    
-                        }
-                    }
+    .topMenu {
+        float:right;
+        position:absolute;
+        top:0; right:0;
+        width:100%;
+            .hamMenu{
+                width:auto;
+                float:right;
+                input{
+                    display:none;
                 }
-                label{
-                    span{
+                .popUp {
+                    display:flex;
+                    flex-wrap:nowrap;
+                    width:100%;
+                    padding:0;
+                    margin-top:30px;
+                    .menuLi {
+                        color:$lightPurple;
+                        font-weight:bold;
+                        list-style:none;
+                        display:inline;
+                        margin: auto 21px;
+                        cursor: pointer;
+                    }
+                    .line{
                         display:none;
+                        
+                    }
+                    img {
+                        display: inline;
+                        margin:0 50px 0 42px;
+                        cursor: pointer;
                     }
                 }
+            }
+        label{
+            display:none;
+            span {
+                display:none;
             }
         }
     //MAIN
@@ -56,6 +79,5 @@
             }
     
         }
-    }
-    
-    
+    }   
+}
