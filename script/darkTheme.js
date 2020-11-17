@@ -24,4 +24,5 @@ darkModeBtn.addEventListener("click",(event)=>{
         logoTheme.src = "assets/logo-mobile.svg";
         diurnoLi.innerHTML = "Modo Nocturno";
     }
-})
+});
+

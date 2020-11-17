@@ -202,6 +202,7 @@ body h1, body h2, body h3, body h4, body h6 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 .introGifos h1 {
@@ -221,7 +222,7 @@ body h1, body h2, body h3, body h4, body h6 {
   height: 130px;
 }
 
-.introGifos #search {
+.introGifos .search {
   font-size: 1rem;
   width: 325px;
   max-width: 334px;
@@ -433,9 +434,17 @@ footer .copyright span {
   color: white;
 }
 
-.inputJS {
+.whenSugerencia {
+  border-radius: 27px 27px 0px 0px;
+}
+
+.sugerencia {
+  width: 325px;
+  max-width: 334px;
   height: 200px;
-  background-color: red;
+  border: 2px solid #572EE5;
+  border-top: 0px;
+  border-radius: 0px 0px 27px 27px;
 }
 
 .darkHTML {
