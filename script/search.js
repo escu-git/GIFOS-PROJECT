@@ -8,6 +8,7 @@ const gifCreateBtn = document.getElementById("createGif")
 const divSearch = document.getElementById("searchContainer");
 const inputSearch = document.getElementById("search");
 const newDiv = document.createElement('div');
+const divSugerencia = document.getElementById("sugerencia");//Div sugerencias
 
 let num = 0;
 //Input
@@ -37,7 +38,6 @@ let imprimirDOM= (imagen)=>{
     newDiv.appendChild(newGif)
     divSearch.appendChild(newDiv);
 }
-debugger
 async function printSearch(fnBuscar) {
     let printSearchArray = []; //Array con contenido de API
     if(printSearchArray.length > 0){
@@ -53,8 +53,7 @@ async function printSearch(fnBuscar) {
 };
 
 ///////////////SEARCH & AUTOCOMPLETE:
-inputSearch.addEventListener("keyup",(event)=>{    
-    let divSugerencia = document.getElementById("sugerencia")
+inputSearch.addEventListener("keyup",(event)=>{
     if(inputSearch.value != ""){
         divSugerencia.classList.add("sugerencia");
         inputSearch.classList.add("whenSugerencia");
@@ -64,8 +63,22 @@ inputSearch.addEventListener("keyup",(event)=>{
     }
     sugerencias();
 });
-
-function sugerencias(){
+async function sugerencias(){
+let sugerenciasArray=[];
+sugerenciaTitle = document.createElement('h3');
+    if(divSugerencia.hasChildNodes()){
+        divSugerencia.removeChild('h3');
+    }
+    let sugerencias = await buscarGifs(inputSearch.value);
+    sugerencias.data.forEach(array =>{
+    sugerenciasArray.push(array.title);
+ });
+ for(let i=0; i<3;i++){
+    sugerenciaTitle.innerHTML = sugerenciasArray[i];
+    divSugerencia.appendChild(sugerenciaTitle);
+    }
+    
+    
     
 
 }
