@@ -64,28 +64,29 @@ inputSearch.addEventListener("keyup",(event)=>{
     sugerencias();
 });
 async function sugerencias(){
-let sugerenciasArray=[];
-sugerenciaTitle = document.createElement('h3');
-    if(divSugerencia.hasChildNodes()){
-        divSugerencia.removeChild('h3');
-    }
+    let sugerenciasArray=[];
+    var sugerenciaTitle = document.createElement('h3');
+    divSugerencia.innerHTML = "";
+    //if(divSugerencia.hasChildNodes()){
+      //  divSugerencia.removeChild(sugerenciaTitle);
+
+    //}
     let sugerencias = await buscarGifs(inputSearch.value);
     sugerencias.data.forEach(array =>{
     sugerenciasArray.push(array.title);
- });
- for(let i=0; i<3;i++){
-    sugerenciaTitle.innerHTML = sugerenciasArray[i];
-    divSugerencia.appendChild(sugerenciaTitle);
+    });
+    for(let i=0; i<3;i++){
+        sugerenciaTitle.innerHTML = sugerenciasArray[i];
+        divSugerencia.appendChild(sugerenciaTitle);
     }
-    
-    
-    
-
+    if(inputSearch.value ==""){
+        divSugerencia.removeChild(sugerenciaTitle);
+    }
 }
 //Botón MÁS GIFS:
 
-let contadorClicks = 0;
-function moreGifs(){
+// let contadorClicks = 0;
+// function moreGifs(){
 
     
-}
+// }

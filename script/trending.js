@@ -3,55 +3,102 @@ const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u";
 
 let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
 
+trendingArray=[];
+let contador = 0;
+trending();
+printTrending(trendingArray, contador)
 async function trending(){
-let apiTrending = await fetch(trendingUrl);
-return apiTrending.json();
-}
+    let apiTrending = await fetch(trendingUrl);
+    let toArray = await apiTrending.json();
+    toArray.data.forEach(array=>{ //Push to array for Trending.
+    trendingArray.push(array);
+    });
+    // return trendingArray
+};
 
-async function showTrending(trending){
-    await trending
-}
-
-showTrending(trending());
-//fetch(trendingGifs)
-// .then(response => response.json())
-// .then(arrayGif => arrayGif.data)
-// .then(arrayArmado =>{
-//     arrayArmado.forEach(x=>{
-//         arrayTrending.push(x);
-//         // let img = x.images.preview_webp.url;
-//         // let createImg = document.createElement("img");
-//         // createImg.src = img;
-//         // createImg.classList.add("trendingGif")
-//         // let DOM = document.getElementById("trendingDiv");
-//         // DOM.appendChild(createImg);
-//     })
-// })
-// .catch(error =>{
-//     console.log("Console log error");
-// })
-
-//*ARRAY
-arrayTrending = [];
-
-//Elements
-const div1 = document.getElementById("div1");
-const div2 = document.getElementById("div2");
-const div3 = document.getElementById("div3");
-
-//Create elements
-const img = document.createElement("img");
-
-
-añadirCarrousel(div1, div2, div3)
-function añadirCarrousel(div1, div2, div3){
-    for(i=0; i<arrayTrending.length;i++){
-        img.src = arrayTrending[i].images.downsized_medium.url;
-        div1.appendChild(img);
-        div2.appendChild(img);
-        div3.appendChild(img);
+async function printTrending(array, contador){
+    let leftBtn = document.getElementById('leftBtn');
+    let rightBtn = document.getElementById('rightBtn');
+    let div1 = document.getElementById('div1');
+    let div2 = document.getElementById('div2');
+    let div3 = document.getElementById('div3');
+    let img1 = document.createElement('img');
+    img1.classList.add("trendingImg")
+    div1.appendChild(img1);
+    let img2 = document.createElement('img');
+    div2.appendChild(img2);
+    img2.classList.add("trendingImg")
+    let img3 = document.createElement('img');
+    div3.appendChild(img3);
+    img3.classList.add("trendingImg")
+    console.log(0+contador)
+    // img1.src = array[0+contador].images.downsized.url;
+    // img2.src = array[1+contador].images.downsized.url;
+    // img3.src = array[2+contador].images.downsized.url;
+    leftBtn.addEventListener('click',(event)=>{
+        if(event){
+            debugger
+        contador++
+        img1.src = array[0+contador].images.downsized.url;
+        img2.src = array[1+contador].images.downsized.url;
+        img3.src = array[2+contador].images.downsized.url;
+        console.log(contador)
     }
-}
+    rightBtn.addEventListener('click',(event=>{
+        if(event){
+            debugger
+            contador--
+            img1.src = array[0+contador].images.downsized.url;
+            img2.src = array[1+contador].images.downsized.url;
+            img3.src = array[2+contador].images.downsized.url;
+        }
+    }))
+    });
+};
+
+
+
+
+// showTrending(trending());
+// //fetch(trendingGifs)
+// // .then(response => response.json())
+// // .then(arrayGif => arrayGif.data)
+// // .then(arrayArmado =>{
+// //     arrayArmado.forEach(x=>{
+// //         arrayTrending.push(x);
+// //         // let img = x.images.preview_webp.url;
+// //         // let createImg = document.createElement("img");
+// //         // createImg.src = img;
+// //         // createImg.classList.add("trendingGif")
+// //         // let DOM = document.getElementById("trendingDiv");
+// //         // DOM.appendChild(createImg);
+// //     })
+// // })
+// // .catch(error =>{
+// //     console.log("Console log error");
+// // })
+
+// //*ARRAY
+// arrayTrending = [];
+
+// //Elements
+// const div1 = document.getElementById("div1");
+// const div2 = document.getElementById("div2");
+// const div3 = document.getElementById("div3");
+
+// //Create elements
+// const img = document.createElement("img");
+
+
+// añadirCarrousel(div1, div2, div3)
+// function añadirCarrousel(div1, div2, div3){
+//     for(i=0; i<arrayTrending.length;i++){
+//         img.src = arrayTrending[i].images.downsized_medium.url;
+//         div1.appendChild(img);
+//         div2.appendChild(img);
+//         div3.appendChild(img);
+//     }
+// }
 
 
 

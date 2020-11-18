@@ -451,6 +451,11 @@ footer .copyright span {
   border-top: 5px black solid;
 }
 
+.trendingImg {
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (min-width: 769px) {
   .topMenu {
     float: right;
