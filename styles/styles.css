@@ -255,34 +255,42 @@ body h1, body h2, body h3, body h4, body h6 {
 
 .trendingContainer .carrouselContainer .divCarrousel {
   display: block;
-  width: calc(100% / 3 - 3%);
-  height: 150px;
+  width: calc(100% / 3 - 20%);
+  height: auto;
   border: 1px solid black;
 }
 
+.trendingContainer #div1, .trendingContainer #div2, .trendingContainer #div3 {
+  width: 243px;
+  max-width: 243px;
+}
+
 .searches {
+  text-align: center;
   display: block;
 }
 
 .searches .searchContainer {
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-}
-
-.searches .searchContainer .newDiv {
-  width: 40%;
-  margin: 25px 21px 22px 25px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .searches .searchContainer .imgBox {
   width: 100%;
+  height: 100%;
 }
 
 footer {
@@ -456,6 +464,34 @@ footer .copyright span {
   height: 100%;
 }
 
+.newDiv {
+  position: relative;
+  width: 40%;
+  height: 200px;
+  background-color: transparent;
+  padding: 0;
+  margin: 10px 10px 10px 10px;
+}
+
+.overlayStyle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #572EE5;
+  opacity: 80%;
+  z-index: 2;
+  text-align: right;
+}
+
+.inserted {
+  position: relative;
+  margin: 10px 10px 0 10px;
+  width: 32px;
+  height: 32px;
+}
+
 @media screen and (min-width: 769px) {
   .topMenu {
     float: right;
@@ -505,6 +541,40 @@ footer .copyright span {
   }
   .topMenu .introGifos h1 {
     width: 64.9%;
+  }
+  .topMenu .newDiv {
+    width: calc(100%/4);
+    height: 40%;
+    background-color: transparent;
+  }
+  .topMenu .trendingContainer {
+    background-color: #F3F5F8;
+  }
+  .topMenu .trendingContainer .carrouselContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+  }
+  .topMenu .trendingContainer .carrouselContainer .trendingGif {
+    width: 243px;
+    height: 187px;
+  }
+  .topMenu .trendingContainer .carrouselContainer .divCarrousel {
+    display: block;
+    width: calc(100% / 3 - 5%);
+    height: 150px;
+    border: 1px solid black;
+  }
+  .topMenu .trendingContainer #div1, .topMenu .trendingContainer #div2, .topMenu .trendingContainer #div3 {
+    width: 243px;
+    max-width: 243px;
   }
   .topMenu footer {
     display: -ms-grid;

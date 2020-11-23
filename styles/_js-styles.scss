@@ -21,3 +21,31 @@
     width:100%;
     height:100%;
 }
+
+//DIVS DE COLOR EN SEARCHBAR
+.newDiv{
+    position: relative;
+    width:40%;
+    height:200px;
+    background-color:transparent;
+    padding:0;
+    margin:10px 10px 10px 10px;
+}
+
+.overlayStyle{
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background-color:$lightPurple;
+    opacity:80%;
+    z-index:2;
+    text-align:right;
+}
+
+.inserted{
+    position: relative;
+    margin: 10px 10px 0 10px;
+    width:32px;
+    height:32px;
+}

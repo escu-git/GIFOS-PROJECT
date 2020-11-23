@@ -47,6 +47,34 @@
                 width:64.9%;
             }
         }
+        .newDiv{
+            width:calc(100%/4);
+            height:40%;
+            background-color:transparent;
+        }
+        .trendingContainer {
+            background-color:$backgroundColor;
+            .carrouselContainer{
+            display:flex;
+            flex-wrap:nowrap;
+            justify-content: space-between;
+            overflow: hidden;
+            width:100%;
+                .trendingGif{
+                    width:243px;
+                    height:187px;
+                }
+                .divCarrousel{
+                    display:block;
+                    width:calc(100% / 3 - 5%);
+                    height: 150px;
+                    border:1px solid black;
+                }
+            }
+            #div1, #div2, #div3{
+                width:243px; max-width:243px;
+            }
+        }
         footer{
             display:grid;
             height:116px;

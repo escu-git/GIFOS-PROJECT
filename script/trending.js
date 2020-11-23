@@ -2,103 +2,77 @@
 const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u";
 
 let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
+let leftBtn = document.getElementById('leftBtn');
+let rightBtn = document.getElementById('rightBtn');
 
 trendingArray=[];
-let contador = 0;
-trending();
-printTrending(trendingArray, contador)
-async function trending(){
-    let apiTrending = await fetch(trendingUrl);
+categoriesArray=[];
+let valorInicial=0;
+
+async function api(tipoRequest,limit,rating, arrayPusheado ){
+    let apiTrending = await fetch(`https://api.giphy.com/v1/gifs/${tipoRequest}?api_key=${apiKey}&limit=${limit}&rating=${rating}`);
     let toArray = await apiTrending.json();
     toArray.data.forEach(array=>{ //Push to array for Trending.
-    trendingArray.push(array);
+        arrayPusheado.push(array);
     });
-    // return trendingArray
+    console.log("api() executed");
 };
-
-async function printTrending(array, contador){
-    let leftBtn = document.getElementById('leftBtn');
-    let rightBtn = document.getElementById('rightBtn');
+////////DOM printing
+async function printTrending(fnTrending, array, num){
+    await fnTrending;
     let div1 = document.getElementById('div1');
     let div2 = document.getElementById('div2');
     let div3 = document.getElementById('div3');
     let img1 = document.createElement('img');
-    img1.classList.add("trendingImg")
-    div1.appendChild(img1);
     let img2 = document.createElement('img');
-    div2.appendChild(img2);
-    img2.classList.add("trendingImg")
     let img3 = document.createElement('img');
-    div3.appendChild(img3);
+    img1.classList.add("trendingImg")
+    img2.classList.add("trendingImg")
     img3.classList.add("trendingImg")
-    console.log(0+contador)
-    // img1.src = array[0+contador].images.downsized.url;
-    // img2.src = array[1+contador].images.downsized.url;
-    // img3.src = array[2+contador].images.downsized.url;
-    leftBtn.addEventListener('click',(event)=>{
-        if(event){
-            debugger
-        contador++
-        img1.src = array[0+contador].images.downsized.url;
-        img2.src = array[1+contador].images.downsized.url;
-        img3.src = array[2+contador].images.downsized.url;
-        console.log(contador)
+    if(num <0 || num > array.length){ 
+        valorInicial = num = 0;
     }
-    rightBtn.addEventListener('click',(event=>{
-        if(event){
-            debugger
-            contador--
-            img1.src = array[0+contador].images.downsized.url;
-            img2.src = array[1+contador].images.downsized.url;
-            img3.src = array[2+contador].images.downsized.url;
-        }
-    }))
-    });
+    img1.src = array[num].images.downsized.url;
+    img2.src = array[num + 1].images.downsized.url;
+    img3.src = array[num + 2].images.downsized.url;
+    div1.innerHTML="";
+    div2.innerHTML="";
+    div3.innerHTML="";
+
+    div1.appendChild(img1);
+    div2.appendChild(img2);
+    div3.appendChild(img3);
+    console.log("api() executed")
 };
+///////CAMBIO DE IMAGENES EN CAROUSEL
+leftBtn.addEventListener('click', (event)=>{
+if(event){
+    valorInicial++
+}
+printTrending(api("trending",25,"g"), trendingArray, valorInicial)
+console.log(valorInicial)
+})
+rightBtn.addEventListener('click', (event)=>{
+    if(event){
+        valorInicial--
+    }
+    printTrending(api("trending",25,"g"), trendingArray, valorInicial)
+})
+//--------------------------------------
+
+////////SUGERENCIAS DE TRENDING (texto)
+async function textoSugeridos(fnTrending, array){
+    await fnTrending
+    let sugeridosDiv = document.getElementById('sugeridos');
+    let textoTrends = document.createElement('h4');
+    textoTrends.innerHTML = `${array[0].name},${array[1].name},${array[2].name},${array[3].name},${array[4].name},${array[5].name}`;
+    console.log(textoTrends)
+    sugeridosDiv.appendChild(textoTrends)
+}
+//--------------------------------------
 
 
+printTrending(api("trending",25,"g",trendingArray),trendingArray, valorInicial)
 
-
-// showTrending(trending());
-// //fetch(trendingGifs)
-// // .then(response => response.json())
-// // .then(arrayGif => arrayGif.data)
-// // .then(arrayArmado =>{
-// //     arrayArmado.forEach(x=>{
-// //         arrayTrending.push(x);
-// //         // let img = x.images.preview_webp.url;
-// //         // let createImg = document.createElement("img");
-// //         // createImg.src = img;
-// //         // createImg.classList.add("trendingGif")
-// //         // let DOM = document.getElementById("trendingDiv");
-// //         // DOM.appendChild(createImg);
-// //     })
-// // })
-// // .catch(error =>{
-// //     console.log("Console log error");
-// // })
-
-// //*ARRAY
-// arrayTrending = [];
-
-// //Elements
-// const div1 = document.getElementById("div1");
-// const div2 = document.getElementById("div2");
-// const div3 = document.getElementById("div3");
-
-// //Create elements
-// const img = document.createElement("img");
-
-
-// añadirCarrousel(div1, div2, div3)
-// function añadirCarrousel(div1, div2, div3){
-//     for(i=0; i<arrayTrending.length;i++){
-//         img.src = arrayTrending[i].images.downsized_medium.url;
-//         div1.appendChild(img);
-//         div2.appendChild(img);
-//         div3.appendChild(img);
-//     }
-// }
-
-
-
+textoSugeridos(api("searches",10,"g",categoriesArray), categoriesArray)
+    
