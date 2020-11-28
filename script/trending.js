@@ -1,62 +1,64 @@
 //VARIABLES
-const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u";
+const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u"; //API KEY para requests.
 
 let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
 let leftBtn = document.getElementById('leftBtn');
 let rightBtn = document.getElementById('rightBtn');
+let valorInicial=0; // Para carousel
 
-trendingArray=[];
-categoriesArray=[];
-let valorInicial=0;
+trendingArray=[]; //Array para printTrending()
+categoriesArray=[]; //Array para categorias textoSugeridos()
 
-async function api(tipoRequest,limit,rating, arrayPusheado ){
-    let apiTrending = await fetch(`https://api.giphy.com/v1/gifs/${tipoRequest}?api_key=${apiKey}&limit=${limit}&rating=${rating}`);
+/////////FUNCION PARA API REQUEST:
+async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
+    //tipoRequest1: gifs / trending
+    //tipoRequest2: searches / categories / "search/tags"
+    let apiTrending = await fetch(`https://api.giphy.com/v1/${tipoRequest1}/${tipoRequest2}?api_key=${apiKey}&limit=${limit}&rating=g`);
+
     let toArray = await apiTrending.json();
     toArray.data.forEach(array=>{ //Push to array for Trending.
-        arrayPusheado.push(array);
+    arrayToPush.push(array);
     });
-    console.log("api() executed");
 };
+//--------------------------------z
+
 ////////DOM printing
 async function printTrending(fnTrending, array, num){
     await fnTrending;
-    let div1 = document.getElementById('div1');
-    let div2 = document.getElementById('div2');
-    let div3 = document.getElementById('div3');
-    let img1 = document.createElement('img');
-    let img2 = document.createElement('img');
-    let img3 = document.createElement('img');
-    img1.classList.add("trendingImg")
-    img2.classList.add("trendingImg")
-    img3.classList.add("trendingImg")
+
+    let img1 = document.getElementById('img1');
+    let img2 = document.getElementById('img2');
+    let img3 = document.getElementById('img3');
+
+    img1.classList.add("trendingImg");
+    img2.classList.add("trendingImg");
+    img3.classList.add("trendingImg");
     if(num <0 || num > array.length){ 
         valorInicial = num = 0;
     }
+    img1.src="";
+    img2.src="";
+    img3.src="";
     img1.src = array[num].images.downsized.url;
     img2.src = array[num + 1].images.downsized.url;
     img3.src = array[num + 2].images.downsized.url;
-    div1.innerHTML="";
-    div2.innerHTML="";
-    div3.innerHTML="";
 
-    div1.appendChild(img1);
-    div2.appendChild(img2);
-    div3.appendChild(img3);
-    console.log("api() executed")
 };
+//-----------------------------------
+
 ///////CAMBIO DE IMAGENES EN CAROUSEL
 leftBtn.addEventListener('click', (event)=>{
 if(event){
     valorInicial++
 }
-printTrending(api("trending",25,"g"), trendingArray, valorInicial)
+printTrending(api("gifs","trending",25,trendingArray), trendingArray, valorInicial)
 console.log(valorInicial)
 })
 rightBtn.addEventListener('click', (event)=>{
     if(event){
         valorInicial--
     }
-    printTrending(api("trending",25,"g"), trendingArray, valorInicial)
+    printTrending(api("gifs","trending",25,trendingArray), trendingArray, valorInicial)
 })
 //--------------------------------------
 
@@ -65,14 +67,12 @@ async function textoSugeridos(fnTrending, array){
     await fnTrending
     let sugeridosDiv = document.getElementById('sugeridos');
     let textoTrends = document.createElement('h4');
-    textoTrends.innerHTML = `${array[0].name},${array[1].name},${array[2].name},${array[3].name},${array[4].name},${array[5].name}`;
-    console.log(textoTrends)
+    textoTrends.innerHTML = `${array[0]}, ${array[1]}, ${array[2]}, ${array[3]}, ${array[4]}.`;
     sugeridosDiv.appendChild(textoTrends)
-}
-//--------------------------------------
-
-
-printTrending(api("trending",25,"g",trendingArray),trendingArray, valorInicial)
-
-textoSugeridos(api("searches",10,"g",categoriesArray), categoriesArray)
     
+}
+//---------------------------------------
+
+printTrending(api("gifs","trending",9,trendingArray),trendingArray, valorInicial)
+
+textoSugeridos(api("trending","searches",5,categoriesArray), categoriesArray)

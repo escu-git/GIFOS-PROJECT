@@ -76,6 +76,10 @@ body h1, body h2, body h3, body h4, body h6 {
   float: left;
 }
 
+.headerContainer .mainLogo img {
+  z-index: 5;
+}
+
 @media screen and (max-width: 768px) {
   .headerContainer .topMenu {
     float: right;
@@ -434,12 +438,24 @@ footer .copyright span {
   background-color: transparent;
 }
 
-.darkMode .trending {
+.darkMode .trendingContainer {
+  background-color: #222326;
+}
+
+.darkMode .trendingContainer .trending {
+  background-color: #222326;
+}
+
+.darkMode .trendingContainer .carrouselContainer {
   background-color: #222326;
 }
 
 .darkMode footer .copyright {
   color: white;
+}
+
+.logoTheme {
+  z-index: 9999;
 }
 
 .whenSugerencia {
@@ -460,8 +476,9 @@ footer .copyright span {
 }
 
 .trendingImg {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 300px;
+  margin: 0 20px;
 }
 
 .newDiv {
@@ -492,13 +509,86 @@ footer .copyright span {
   height: 32px;
 }
 
+.userYTitle {
+  display: none;
+}
+
+.userTitle {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+}
+
+.gifTitle {
+  display: block;
+  position: absolute;
+  bottom: -10;
+  left: 0;
+  color: white;
+  font-weight: bold;
+}
+
+.divAgrandarImg {
+  position: fixed;
+  background-color: white;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.agrandarImg {
+  width: 48%;
+  height: 53%;
+  margin: 40px 0 0 0;
+}
+
+.exit {
+  position: absolute;
+  top: 20;
+  right: 15;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.divInfo {
+  display: block;
+  background-color: grey;
+  z-index: 6;
+}
+
+.userTitleAgrandar {
+  position: relative;
+  color: #572EE5;
+}
+
+.gifTitleAgrandar {
+  position: relative;
+  color: #572EE5;
+}
+
+.textoTrends {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 769px) {
+  .header {
+    z-index: 0;
+  }
+  .header .mainLogo img {
+    z-index: 999;
+  }
   .topMenu {
     float: right;
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
+    z-index: 0;
   }
   .topMenu .hamMenu {
     width: auto;

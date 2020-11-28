@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" id="html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>GIFOS - ESCUDERO</title>
+    
+
+    <title>MISGIFOS - ESCUDERO</title>
 </head>
 <body id="body">
     <header class="headerContainer clearfix">
@@ -31,49 +33,35 @@
         </nav>
     </header>
 <main>
-    <section class="introGifos">
-        <h1>Inspírate, busca, guarda, y crea los mejores <span>gifos</span></h1>
-        <img src="assets/ilustra_header.svg" alt="Comunidad GIFOS">
-        <input type="text" id="search" placeholder="Busca GIFOS y más" class="search" autocomplete="off">
-        <div id="sugerencia"></div>
-        <h2>Trending:</h2>
-        <div id="sugeridos"></div>
-        <h2 id="trends"></h2>
-    </section>
-    <!-- SEARCH GIFS -->
-    <section id="searches" class="searches">
-        <div class="searchContainer" id="searchContainer"></div> 
-    </section>
-    <!-- TRENDING GIFS-->
-    <section class="trendingContainer">
-        <div class="trending">
-            <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+    <section class="createGifos">
+        <div class="mainScreen">
+
+            <video src=""></video>
+            <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+            <script src="camera.js"></script>
         </div>
-        <div class="carrouselContainer" id="trendingDiv">
-            <img src="assets/button-slider-left.svg" alt="Left" id="leftBtn">
-            <img src="" alt="" id="img1">
-            <img src="" alt=""id="img2">
-            <img src="" alt=""id="img3">
-            <!-- <div class="divCarrousel" id="div1"></div>
-            <div class="divCarrousel" id="div2"></div>
-            <div class="divCarrousel" id="div3"></div> -->
-            <img src="assets/Button-Slider-right.svg" alt="Right" id="rightBtn">
+        <div class="numbers">
+            <div class="number" id="1">1</div>
+            <div class="number" id="2">2</div>
+            <div class="number" id="3">3</div>
         </div>
-        <!--  -->
+        <span></span>
+        <div class="comenzar">Comenzar</div>
     </section>
+
 </main>
-    <footer>
+    
+    <footer class="mobileFooter">
+        <div>
+            <h6>Compartir en:</h6>
             <div class="socialMedia">
-                <h6>Compartir en:</h6>
                 <img src="assets/icon_facebook.svg" alt="Facebook">
                 <img src="assets/icon-twitter.svg" alt="Twitter">
                 <img src="assets/icon_instagram.svg" alt="Instagram">
             </div>
             <h6 class="copyright">&#169; <span>gifos 2020</span> all rights reserved</h6>
+        </div>
     </footer>
     <script src="script/darkTheme.js"></script>
-    <script src="script/search.js"></script>
-    <script src="script/trending.js"></script>
-    <script src="script/functions.js"></script>
 </body>
 </html>

@@ -26,8 +26,14 @@
             background-color:transparent;
         }
     }
-    .trending{
-        background-color:$alt-background;
+    .trendingContainer{
+        background-color:#222326;
+        .trending{
+            background-color:$alt-background;
+    }
+        .carrouselContainer{
+            background-color:#222326;
+        }
     }
     footer{
         .copyright{

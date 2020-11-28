@@ -9,6 +9,9 @@
         height:48.8px;
         margin:2.8% 0 1.4% 5.9%;
         float:left;
+        img{
+            z-index:5;
+        }
     }
         @media screen and (max-width: 768px){
             .topMenu {

@@ -8,44 +8,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     
 
-    <title>MISGIFOS - ESCUDERO</title>
+    <title>FAVORITES - ESCUDERO</title>
 </head>
 <body id="body">
     <header class="headerContainer clearfix">
-        <div class="mainLogo"></div>
         <nav class="topMenu">
+            <div class="mainLogo" id="mainLogo"></div>
             <div class="hamMenu">
                 <input type="checkbox" id="menu" class="menuInput">
-                    <label for="menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
+                <label for="menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
                 <ul class="popUp">
-                    <li id="darkMode">Modo nocturno</li>
+                    <li class="menuLi" id="darkMode">Modo nocturno</li>
                     <span class="line"></span>
-                    <li>Favoritos</li>
+                    <li class="menuLi" id="favs" ><a href="favorites.html">Favoritos</a></li>
                     <span class="line"></span>
-                    <li>Mis gifos</li>
-                    <li>ImagenVideo</li>
+                    <li class="menuLi"><a href="myGifos.html">Mis gifos</a></li>
+                    <img src="assets/button-crear-gifo.svg" alt="Create Gif" id="createGif">
                 </ul>
             </div>
         </nav>
     </header>
 <main>
-    <section class="createGifos">
-        <div class="mainScreen"></div>
-        <div class="numbers">
-            <div class="number" id="1">1</div>
-            <div class="number" id="2">2</div>
-            <div class="number" id="3">3</div>
+    <section class="favorites">
+        <div class="favoritesTitle">
+            <img src="assets/icon-favoritos.svg" alt="Iconos favoritos">
+            <h1>Favoritos</h1>
         </div>
-        <span></span>
-        <div class="comenzar">Comenzar</div>
+        <div class="favGifs">
+            <div class="favgif">a</div>
+            <div class="favgif">a</div>
+            <div class="favgif">as</div>
+            <div class="favgif">as</div>
+            <div class="favgif">as</div>
+            <div class="favgif">as</div>
+            
+        </div>
     </section>
-
+    <section class="trendingContainer">
+        <div class="trending">
+            <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+        </div>
+        <div class="carrouselContainer" id="trendingDiv">
+            <img src="assets/button-slider-left.svg" alt="Left" id="leftBtn">
+            <img src="" alt="" id="img1">
+            <img src="" alt=""id="img2">
+            <img src="" alt=""id="img3">
+            <!-- <div class="divCarrousel" id="div1"></div>
+            <div class="divCarrousel" id="div2"></div>
+            <div class="divCarrousel" id="div3"></div> -->
+            <img src="assets/Button-Slider-right.svg" alt="Right" id="rightBtn">
+        </div>
+        <!--  -->
+    </section>
 </main>
-    
     <footer class="mobileFooter">
         <div>
             <h6>Compartir en:</h6>
@@ -57,6 +76,7 @@
             <h6 class="copyright">&#169; <span>gifos 2020</span> all rights reserved</h6>
         </div>
     </footer>
-    <script src="script/script.js"></script>
+    <script src="script/darkTheme.js"></script>
+    <script src=""></script>
 </body>
 </html>
