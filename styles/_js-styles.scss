@@ -3,8 +3,6 @@
 .logoTheme{
     z-index:9999;
 }
-
-
 //Search input
 
 .whenSugerencia{
@@ -28,6 +26,15 @@
     width:200px;
     height:300px;
     margin:0 20px;
+}
+
+.leftBtn, .rightBtn {
+    cursor:pointer;
+    margin: 0 10px;
+    &:hover{
+        transform: scale(1.1);
+        transition: 0.2s;
+    }
 }
 
 //DIVS DE COLOR EN SEARCHBAR

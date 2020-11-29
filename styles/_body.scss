@@ -1,4 +1,6 @@
-*
+*{
+    @include darkClearTransition;
+}
 ::before
 ::after {
     box-sizing:border-box;
@@ -7,7 +9,7 @@
 html {
     font-size:16px;
     border-top: 5px $lightPurple solid;
-    width:100vw;
+    width:100%
 }
 body {
     @include body;

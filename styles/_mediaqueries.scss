@@ -1,7 +1,7 @@
 @media screen and (min-width:769px){
     .header{
         z-index:0;
-        .mainLogo {
+        .topMenu {
             img{
                 z-index:999;
             }
@@ -32,6 +32,9 @@
                         display:inline;
                         margin: auto 21px;
                         cursor: pointer;
+                        &:hover{
+                            transform:scale(1.1);
+                        }
                     }
                     .line{
                         display:none;
@@ -103,7 +106,7 @@
                 h6, img{
                     margin: 0px;
                     height:20px;
-                    margin-right:20px;
+                    margin-right:20px;  
                 }
             }
             .copyright{

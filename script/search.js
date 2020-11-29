@@ -10,7 +10,7 @@ const inputSearch = document.getElementById("search");
 const divSugerencia = document.getElementById("sugerencia");//Div sugerencias
 
 let num = 0;
-//Input
+//Input de búsqueda *** Acá se coloca el valor a buscar, y envía el valor a printSearch con buscarGifs como param
 ///////////////////////
 inputSearch.addEventListener("keyup", (event)=>{
     if(event.keyCode === 13){ //Activa búsqueda con enter.
@@ -26,7 +26,6 @@ async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
     return response.json();
 }
 //---------------------------------
-
 
 //////////////PRINT CONTENT IN DOM FUNCTION
 let imprimirDOM= (imagen, titulo, user)=>{
@@ -113,7 +112,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
         exit.classList.add('exit');
         exit.addEventListener('click',(event)=>{
         body.removeChild(agrandarImg);
-        });
+        })
         divInfo.classList.add('divInfo');
         agrandarImg.classList.add('divAgrandarImg')
         img.classList.add('agrandarImg')

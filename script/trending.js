@@ -4,6 +4,8 @@ const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u"; //API KEY para requests.
 let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
 let leftBtn = document.getElementById('leftBtn');
 let rightBtn = document.getElementById('rightBtn');
+rightBtn.classList.add("rightBtn");
+leftBtn.classList.add("leftBtn");
 let valorInicial=0; // Para carousel
 
 trendingArray=[]; //Array para printTrending()

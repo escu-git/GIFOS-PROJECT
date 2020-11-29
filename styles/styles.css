@@ -29,7 +29,11 @@
   margin: 25px 0 25px 0;
 }
 
-*
+* {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 ::before
 ::after {
   -webkit-box-sizing: border-box;
@@ -40,7 +44,7 @@
 html {
   font-size: 16px;
   border-top: 5px #572EE5 solid;
-  width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -78,6 +82,7 @@ body h1, body h2, body h3, body h4, body h6 {
 
 .headerContainer .mainLogo img {
   z-index: 5;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -409,8 +414,15 @@ footer .copyright span {
   text-transform: uppercase;
 }
 
+* {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .darkMode {
   background-color: #37383C;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .darkMode h1, .darkMode h2, .darkMode h3, .darkMode h4, .darkMode h6 {
@@ -479,6 +491,18 @@ footer .copyright span {
   width: 200px;
   height: 300px;
   margin: 0 20px;
+}
+
+.leftBtn, .rightBtn {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.leftBtn:hover, .rightBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .newDiv {
@@ -579,7 +603,7 @@ footer .copyright span {
   .header {
     z-index: 0;
   }
-  .header .mainLogo img {
+  .header .topMenu img {
     z-index: 999;
   }
   .topMenu {
@@ -614,6 +638,10 @@ footer .copyright span {
     display: inline;
     margin: auto 21px;
     cursor: pointer;
+  }
+  .topMenu .hamMenu .popUp .menuLi:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   .topMenu .hamMenu .popUp .line {
     display: none;
