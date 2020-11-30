@@ -3,6 +3,7 @@ const logo = document.getElementById('mainLogo')
 const favoritos = document.getElementById("favs")
 const misGifos = document.getElementById("misGifos")
 const gifCreateBtn = document.getElementById("createGif")
+let searchesDiv = document.getElementById('searches');
 
 //SEARCH SECTION:
 const divSearch = document.getElementById("searchContainer");
@@ -37,7 +38,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
     let download = document.createElement('img'); 
     let maxImg = document.createElement('img');
     let userTitle = document.createElement('h4');
-    let gifTitle = document.createElement('h5');
+    let gifTitle = document.createElement('h5');    
     //AÑADIR USER Y TITULO A CADA GIF:
     userTitle.innerHTML=user
     gifTitle.innerHTML=titulo
@@ -51,9 +52,10 @@ let imprimirDOM= (imagen, titulo, user)=>{
     like.classList.add('inserted');
     download.classList.add('inserted');
     maxImg.classList.add('inserted');
-    like.src= "assets/icon-fav.svg"
-    download.src= "assets/icon-download.svg"
-    maxImg.src="assets/icon-max-normal.svg"
+    like.src= "assets/icon-fav.svg";
+    download.src= "assets/icon-download.svg";
+    maxImg.src="assets/icon-max-normal.svg";
+
 
     //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
     newGif.addEventListener("mouseover",(event)=>{
@@ -137,15 +139,20 @@ let imprimirDOM= (imagen, titulo, user)=>{
     overlay.appendChild(userTitle);
     overlay.appendChild(gifTitle)
 };
+
 //Función para cambiar imagenes:
 function listenerCambioImg(objeto,accion,imagen){
     objeto.addEventListener(accion,(event)=>{
         objeto.src=imagen
     })
 }
+
 //------------------------------
 ///////////////////////Imprimir imagenes y texto
 async function printSearch(fnBuscar, textoBuscado) {
+    let verMasDiv = document.createElement('div');
+    let verMas = document.createElement('img');
+    verMas.src = "assets/CTA-ver-mas.svg";
     let printSearchArray = []; //Array con contenido de API
     if(printSearchArray.length > 0){
         printSearchArray=[];
@@ -158,8 +165,12 @@ async function printSearch(fnBuscar, textoBuscado) {
         printSearchArray.push(array);
         printSearchArray.forEach(imagenes=>{
             imprimirDOM(imagenes.images.downsized.url, imagenes.title, imagenes.username)
+        
         })
     })
+    verMasDiv.appendChild(verMas);
+    searchesDiv.appendChild(verMasDiv);
+    listenerCambioImg(verMas, 'mouseover', "assets/CTA-ver-mas-hover.svg");
 };
 //ARREGLAR FUNCTION PARA CAMBIAR EL TITULO!!!!!
 function changeTitle(textoBuscado){
