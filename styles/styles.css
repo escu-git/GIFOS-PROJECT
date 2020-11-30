@@ -599,6 +599,11 @@ footer .copyright span {
   cursor: pointer;
 }
 
+.gifVideo {
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (min-width: 769px) {
   .header {
     z-index: 0;

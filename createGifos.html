@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     
 
-    <title>MISGIFOS - ESCUDERO</title>
+    <title>CREA TUS GIFOS! - ESCUDERO</title>
 </head>
 <body id="body">
     <header class="headerContainer clearfix">
@@ -36,9 +36,7 @@
     <section class="createGifos">
         <div class="mainScreen">
 
-            <video src=""></video>
-            <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-            <script src="camera.js"></script>
+            <video controls autoplay  id="gifVideo"></video>
         </div>
         <div class="numbers">
             <div class="number" id="1">1</div>
@@ -46,14 +44,17 @@
             <div class="number" id="3">3</div>
         </div>
         <span></span>
-        <div class="comenzar">Comenzar</div>
+        <button id="visualizeVideo">Encender cámara</button>
+        <button id="startBtn">Iniciar grabación</button>
+        <button id="stopBtn">Detener Grabación</button>
+        <button id="uploadBtn">Subir Gifo</button>
     </section>
-
-</main>
     
-    <footer class="mobileFooter">
-        <div>
-            <h6>Compartir en:</h6>
+</main>
+
+<footer class="mobileFooter">
+    <div>
+        <h6>Compartir en:</h6>
             <div class="socialMedia">
                 <img src="assets/icon_facebook.svg" alt="Facebook">
                 <img src="assets/icon-twitter.svg" alt="Twitter">
@@ -63,5 +64,7 @@
         </div>
     </footer>
     <script src="script/darkTheme.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="script/camera.js"></script>
 </body>
 </html>
