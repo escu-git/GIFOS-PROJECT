@@ -18,7 +18,7 @@ const darkMode = ()=>{ //Todos los cambios al hacer dark o clear mode:
     body.classList.toggle('darkMode');
     html.classList.toggle('darkHTML');
     logoTheme.src = "assets/logo-mobile-modo-noct.svg";
-    diurnoLi.innerHTML = "Modo Diurno";
+    diurnoLi.innerHTML = "Modo Diurno";    
 }
 createGifosBtn.onclick= ()=>{
     window.location = "createGifos.html"
