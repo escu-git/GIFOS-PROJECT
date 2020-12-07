@@ -47,7 +47,7 @@
     margin:10px 10px 10px 10px;
 }
 
-.overlayStyle{
+.overlayStyle{ //Overground violeta
     position:absolute;
     top:0;left:0;
     width:100%;
@@ -63,6 +63,10 @@
     margin: 10px 10px 0 10px;
     width:32px;
     height:32px;
+}
+.imgBox {
+    width:100%;
+    height:100%;
 }
 
 //USUARIO Y TITULO DE GIF EN BUSQUEDAS.
@@ -85,7 +89,9 @@
     color:white;
     font-weight: bold;
 }
+
 //-----------------------------------------------------
+
 .divAgrandarImg{ //CAMBIAR POSITION, TOP Y LEFT.
     position: fixed;
     background-color:white;;
@@ -130,4 +136,10 @@
 .gifVideo{
     width:100%;
     height:100%;
+}
+
+//Favoritos
+.favGifs{
+    display:flex;
+    flex-wrap:wrap;
 }
