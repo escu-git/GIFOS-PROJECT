@@ -85,18 +85,18 @@ stopBtn.addEventListener('click', ()=>{
 
 uploadBtn.addEventListener('click',()=>{
     // enviar gifo.
-    fetch("https://upload.giphy.com/v1/gifs?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u?username=pablomartinescudero", 
+    fetch("https://upload.giphy.com/v1/gifs?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u", 
     {
         method: 'POST',
         body: form
     })
     .then(res => res.json())
     .then(res => {
-        console.log("fin del envio!!", res.data.id);
-        idArray.push(res.data.id)
-        console.log(idArray)
     })
     .catch(err => {
         console.log("error.!!!", err);
     })
+    console.log("Se envío a GIPHY:", res.data.id);
+    // idArray.push(res.data.id)
+    // console.log(idArray)
 } )

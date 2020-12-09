@@ -121,7 +121,6 @@ let imprimirDOM= (imagen, titulo, user)=>{
     }//Acá se termina la logica de favoritos
     localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
 })
-
     //AGRANDAR IMAGEN con click en maxImg:
     maxImg.addEventListener('click',(event)=>{
         //Create elements:
@@ -181,7 +180,9 @@ async function printSearch(fnBuscar, textoBuscado) {
         printSearchArray=[];
     }
     changeTitle(textoBuscado);
-    
+    if(divSearch.hasChildNodes()){
+        divSearch.innerHTML = ""; //Borrar busquedas anteriores, si es que las hay.
+    }
     //Array e imagenes
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
@@ -209,14 +210,15 @@ verMas.addEventListener('click',(event)=>{
 })
 
 
-//ARREGLAR FUNCTION PARA CAMBIAR EL TITULO!!!!!
+//--------------------------- Titulo de búsqueda en DOM -----
 function changeTitle(textoBuscado){
     let trendingTitle = document.createElement('h2');
     let texto = document.createTextNode(textoBuscado);
-    let divTrends = document.getElementById('trends');
-    if(texto.hasChildNodes()){
-    trendingTitle.innerHTML="";
-    }
+    let divTrends = document.getElementById('sugerenciaTitle');
+    if(divTrends.hasChildNodes()){
+        divTrends.innerHTML=""; 
+    }//Borrar titulos anteriores, si es que los hay
+
     trendingTitle.appendChild(texto)
     divTrends.appendChild(trendingTitle);
 }
