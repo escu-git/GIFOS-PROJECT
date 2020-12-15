@@ -1,3 +1,4 @@
+const createBtn = document.getElementById
 var video = document.querySelector('video');
 let visualizeVideo = document.getElementById('visualizeVideo');
 let startBtn = document.getElementById('startBtn');
@@ -14,7 +15,7 @@ function captureCamera(callback) {
         audio: false, 
         video: {
             height: { max: 480 }
-        }
+        }   
     }).then(function(camera) {
         callback(camera);
     }).catch(function(error) {
