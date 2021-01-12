@@ -5,11 +5,20 @@ let startBtn = document.getElementById('startBtn');
 let stopBtn = document.getElementById('stopBtn'); //BOTÓN DETENER GRABACIÓN
 let gifVideo = document.getElementById('gifVideo');
 let form;
+var recorder; // globally accessible
 
-let idArray = localStorage.getItem('id')
+// localStorage.setItem('misGifos',"");
+var idArray =[];
+
+if(!localStorage.getItem('id')){
+    localStorage.setItem('id',[])
+}else{
+    idArray == localStorage.getItem('id');
+}
 //atributos:
 gifVideo.classList.add('gifVideo');
 
+//CAPTURAR IMAGEN
 function captureCamera(callback) {
     navigator.mediaDevices.getUserMedia({ 
         audio: false, 
@@ -18,12 +27,13 @@ function captureCamera(callback) {
         }   
     }).then(function(camera) {
         callback(camera);
+        console.log("Se encendió la cámara")
     }).catch(function(error) {
-        alert('Unable to capture your camera. Please check console logs.');
+        alert('No se pudo capturar video, revisar console.error');
         console.error(error);
     });
 }
-
+//DETENER GRABACIÓN
 function stopRecordingCallback() {
     video.src = video.srcObject = null;
     video.muted = false;
@@ -38,9 +48,9 @@ function stopRecordingCallback() {
     recorder.camera.stop();
     recorder.destroy();
     recorder = null;
+    console.log("Se detuvo la grabación")
 }
-
-var recorder; // globally accessible
+//COMENZAR GRABACION
 btnInicio.addEventListener('click',()=>{
     this.disabled = true;
     captureCamera(camera=> { //CALLBACK QUE PROCESA EL VIDEO
@@ -48,7 +58,7 @@ btnInicio.addEventListener('click',()=>{
         // video.volume = 0;
         video.srcObject = camera;
 
-        video.play();
+        video.play();  
 
         recorder = RecordRTC(camera, {
             type: 'gif',
@@ -58,19 +68,8 @@ btnInicio.addEventListener('click',()=>{
             hidden: 240,
             onGifRecordingStarted: function() {
                 console.log('grabacion iniciada')
-            },
+            }
         });
-
-        // recorder = RecordRTC(camera, {
-        //     type: 'video'
-        // });
-
-        // recorder.startRecording();
-
-        // // release camera on stopRecording
-        // recorder.camera = camera;
-
-        //stopBtn.disabled = false;
     });
 });
 
@@ -82,6 +81,7 @@ startBtn.addEventListener('click', ()=>{
 stopBtn.addEventListener('click', ()=>{
     stopBtn.disabled = true;
     recorder.stopRecording(stopRecordingCallback);
+    vidOff()
 });
 
 uploadBtn.addEventListener('click',()=>{
@@ -93,11 +93,23 @@ uploadBtn.addEventListener('click',()=>{
     })
     .then(res => res.json())
     .then(res => {
+        console.log("Se envío a GIPHY:", res.data.id);
+        idArray.push(res.data.id);
+        localStorage.setItem('id',idArray)
+        console.log(idArray);
     })
     .catch(err => {
         console.log("error.!!!", err);
     })
-    console.log("Se envío a GIPHY:", res.data.id);
-    // idArray.push(res.data.id)
-    // console.log(idArray)
 } )
+
+
+//Apagar cámara después de grabar
+function vidOff() {
+    //clearInterval(theDrawLoop);
+    //ExtensionData.vidStatus = 'off';
+    camera.pause();
+    camera.src = "";
+    localstream.getTracks()[0].stop();
+    console.log("La cámara fue apagada");
+  }

@@ -5,7 +5,7 @@ let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limi
 let leftBtn = document.getElementById('leftBtn');
 let rightBtn = document.getElementById('rightBtn');
 rightBtn.classList.add("rightBtn");
-leftBtn.classList.add("leftBtn");
+leftBtn.classList.add("leftBtn" );
 let valorInicial=0; // Para carousel
 
 trendingArray=[]; //Array para printTrending()
@@ -22,7 +22,7 @@ async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
     arrayToPush.push(array);
     });
 };
-//--------------------------------z
+//--------------------------------
 
 ////////DOM printing
 async function printTrending(fnTrending, array, num){
