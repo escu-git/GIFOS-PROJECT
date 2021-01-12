@@ -13,6 +13,10 @@ const verMas = document.createElement('img');
 verMas.src = "assets/CTA-ver-mas.svg";
 
 //ARRAY LOCALSTORAGE:
+//localStorage.setItem('favoritos', "")
+if(localStorage.getItem('favoritos') === null){
+    localStorage.setItem('favoritos',"") //Esto chequea si la key 'favoritos' existe en localStorage, caso contrario, la crea.
+}
 let arrayFavoritos; //
 if(localStorage.getItem('favoritos').length > 0){
     arrayFavoritos = JSON.parse(localStorage.getItem('favoritos'));
@@ -111,11 +115,11 @@ let imprimirDOM= (imagen, titulo, user)=>{
     like.addEventListener('click',(event)=>{
     array = [];
     let consulta = event.path[2].childNodes[0].currentSrc //ACÁ VOLCAR EL OBJETO PARA TOMAR TITULOS Y DEMÁS
-    if(arrayFavoritos.includes(consulta)){ //Si el array no incluye el gif
+    if(arrayFavoritos.includes(consulta)){ //Si el array ya incluye el GIF, lo elimina:
         let index = arrayFavoritos.indexOf(consulta);
         arrayFavoritos.splice(index,1);
         console.log(arrayFavoritos);
-    }else{ //Si el array ya incluye el gif:
+    }else{ //Si el array no incluye el GIF, lo suma:
         arrayFavoritos.push(consulta);
         console.log(arrayFavoritos);
     }//Acá se termina la logica de favoritos

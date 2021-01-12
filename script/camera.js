@@ -10,6 +10,7 @@ var recorder; // globally accessible
 // localStorage.setItem('misGifos',"");
 var idArray =[];
 
+<<<<<<< HEAD
 if(!localStorage.getItem('id')){
     localStorage.setItem('id',[])
 }else{
@@ -19,6 +20,24 @@ if(!localStorage.getItem('id')){
 gifVideo.classList.add('gifVideo');
 
 //CAPTURAR IMAGEN
+=======
+let idArray;
+
+//atributos:
+gifVideo.classList.add('gifVideo');
+
+if(localStorage.getItem('misGifos') === null){
+    localStorage.setItem('misGifos',"");
+    //Crear localStorage en caso de no existir.     
+}
+
+if(localStorage.getItem('misGifos').length = 0){
+    idArray = localStorage.getItem('misGifos');
+}else{
+    idArray = [];
+}
+
+>>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65
 function captureCamera(callback) {
     navigator.mediaDevices.getUserMedia({ 
         audio: false, 
@@ -35,9 +54,12 @@ function captureCamera(callback) {
 }
 //DETENER GRABACIÓN
 function stopRecordingCallback() {
-    video.src = video.srcObject = null;
-    video.muted = false;
-    video.volume = 1;
+    // video.src = video.srcObject = null;
+    // video.muted = false;
+    const mediaStream = video.srcObject;
+    const tracks = mediaStream.getTracks();
+    // video.volume = 1;
+    tracks.forEach(track=> track.stop());
     let blob = recorder.getBlob();
     video.src = URL.createObjectURL(blob);
     
@@ -45,7 +67,7 @@ function stopRecordingCallback() {
     form.append('file', blob, 'myGif.gif');
     console.log("ESTE ES EL FILE!!!!", form.get('file'));
 
-    recorder.camera.stop();
+    //recorder.camera.stop();
     recorder.destroy();
     recorder = null;
     console.log("Se detuvo la grabación")
@@ -93,14 +115,24 @@ uploadBtn.addEventListener('click',()=>{
     })
     .then(res => res.json())
     .then(res => {
+<<<<<<< HEAD
         console.log("Se envío a GIPHY:", res.data.id);
         idArray.push(res.data.id);
         localStorage.setItem('id',idArray)
         console.log(idArray);
+=======
+        let temporal = JSON.stringify(res.data.id);
+        console.log("Se envío a GIPHY:", temporal);
+
+        idArray.push(temporal)
+        console.log(idArray)
+        localStorage.setItem('misGifos', JSON.stringify(idArray));
+>>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65
     })
     .catch(err => {
         console.log("error.!!!", err);
     })
+<<<<<<< HEAD
 } )
 
 
@@ -113,3 +145,6 @@ function vidOff() {
     localstream.getTracks()[0].stop();
     console.log("La cámara fue apagada");
   }
+=======
+} )
+>>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65
