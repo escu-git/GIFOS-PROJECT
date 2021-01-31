@@ -10,7 +10,6 @@ var recorder; // globally accessible
 // localStorage.setItem('misGifos',"");
 var idArray =[];
 
-<<<<<<< HEAD
 if(!localStorage.getItem('id')){
     localStorage.setItem('id',[])
 }else{
@@ -20,24 +19,6 @@ if(!localStorage.getItem('id')){
 gifVideo.classList.add('gifVideo');
 
 //CAPTURAR IMAGEN
-=======
-let idArray;
-
-//atributos:
-gifVideo.classList.add('gifVideo');
-
-if(localStorage.getItem('misGifos') === null){
-    localStorage.setItem('misGifos',"");
-    //Crear localStorage en caso de no existir.     
-}
-
-if(localStorage.getItem('misGifos').length = 0){
-    idArray = localStorage.getItem('misGifos');
-}else{
-    idArray = [];
-}
-
->>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65
 function captureCamera(callback) {
     navigator.mediaDevices.getUserMedia({ 
         audio: false, 
@@ -115,24 +96,14 @@ uploadBtn.addEventListener('click',()=>{
     })
     .then(res => res.json())
     .then(res => {
-<<<<<<< HEAD
         console.log("Se envío a GIPHY:", res.data.id);
         idArray.push(res.data.id);
         localStorage.setItem('id',idArray)
         console.log(idArray);
-=======
-        let temporal = JSON.stringify(res.data.id);
-        console.log("Se envío a GIPHY:", temporal);
-
-        idArray.push(temporal)
-        console.log(idArray)
-        localStorage.setItem('misGifos', JSON.stringify(idArray));
->>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65
     })
     .catch(err => {
         console.log("error.!!!", err);
     })
-<<<<<<< HEAD
 } )
 
 
@@ -145,6 +116,3 @@ function vidOff() {
     localstream.getTracks()[0].stop();
     console.log("La cámara fue apagada");
   }
-=======
-} )
->>>>>>> 79a0d82b830159f3c9bbc74bcfea4f55579c7c65

@@ -13,7 +13,6 @@ const verMas = document.createElement('img');
 verMas.src = "assets/CTA-ver-mas.svg";
 
 //ARRAY LOCALSTORAGE:
-//localStorage.setItem('favoritos', "")
 if(localStorage.getItem('favoritos') === null){
     localStorage.setItem('favoritos',"") //Esto chequea si la key 'favoritos' existe en localStorage, caso contrario, la crea.
 }
@@ -24,9 +23,6 @@ if(localStorage.getItem('favoritos').length > 0){
     arrayFavoritos = [];
 }
 
-// if(localStorage.getItem('favoritos').lenght > 0){
-//     arrayFavoritos = JSON.parse(localStorage.getItem('favoritos'));
-// }
 let num = 0;
 let limit = 12;
 //Input de búsqueda *** Acá se coloca el valor a buscar, y envía el valor a printSearch con buscarGifs como param
@@ -265,6 +261,7 @@ async function sugerencias(){
 }
 
 function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTILIZARSE TANTO EN INDEX, COMO EN FAVORITOS COMO EN MISGIFOS. Si llego con el tiempo la armo. Haciendola genérica y pasando por parámetros todo lo necesario para imprimir en el DOM.
+    if(arrayFavoritos>0){
     arrayFavoritos.forEach(element=>{
         //Elementos:
         let favGifsDivs = document.getElementById('favGifsDiv');
@@ -291,10 +288,10 @@ function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTI
         userTitle.classList.add('userYTitle')
         listenerCambioImg(dislike,'mouseover',"assets/icon-fav-hover.svg");
         listenerCambioImg(dislike,'mouseleave',"assets/icon-fav.svg");
-        listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
-        listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
-        listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
-        listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
+        listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg");
+        listenerCambioImg(download,'mouseleave',"assets/icon-download.svg");
+        listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg");
+        listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg");
         
         //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
         imgDiv.addEventListener("mouseover",(event)=>{
@@ -333,5 +330,18 @@ function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTI
     imgDiv.appendChild(overlay);
     favGifsDivs.appendChild(imgDiv);
     })
-
+}
+    else{
+    console.log('no hay imagenes')
+    // let imgIcon = createElement('img');
+    // let div = getElementById(favGifsDivs);
+    // let contenedor = createElement('div');
+    // imgIcon.src = "assets/icon-max-normal.svg";
+    // imgIcon.classList('icons');
+    // contenedor.appendChild(imgIcon)
+    // div.appendChild(contenedor)
+    let texto = createElement('h1');
+    texto.createTextNode('HOLA')
+    favGifsDivs.appendChild(texto)
+    }
 }
