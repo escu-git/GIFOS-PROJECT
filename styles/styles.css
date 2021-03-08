@@ -539,7 +539,7 @@ footer .copyright span {
 }
 
 .icons {
-  width: 150px;
+  width: 100%;
   height: 151px;
 }
 
@@ -620,6 +620,16 @@ footer .copyright span {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.div1 {
+  width: 100%;
+  height: 300px;
+}
+
+.tituloSinGifs {
+  text-align: center;
+  color: #5ED7C6;
 }
 
 @media screen and (min-width: 769px) {

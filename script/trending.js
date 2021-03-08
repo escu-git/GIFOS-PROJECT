@@ -25,16 +25,17 @@ async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
 //--------------------------------
 
 ////////DOM printing
-async function printTrending(fnTrending, array, num){
+async function printTrending(fnTrending, array, num){    
     await fnTrending;
 
     let img1 = document.getElementById('img1');
     let img2 = document.getElementById('img2');
     let img3 = document.getElementById('img3');
-
+    
     img1.classList.add("trendingImg");
     img2.classList.add("trendingImg");
     img3.classList.add("trendingImg");
+
     if(num <0 || num > array.length){ 
         valorInicial = num = 0;
     }
@@ -44,8 +45,16 @@ async function printTrending(fnTrending, array, num){
     img1.src = array[num].images.downsized.url;
     img2.src = array[num + 1].images.downsized.url;
     img3.src = array[num + 2].images.downsized.url;
-
 };
+
+function violetHover(img){
+    let overlay = document.createElement('div');
+
+    img.addEventListener('hover',(event)=>{
+        overlay.classList.add('overlayStyle')
+    })
+    
+}
 //-----------------------------------
 
 ///////CAMBIO DE IMAGENES EN CAROUSEL

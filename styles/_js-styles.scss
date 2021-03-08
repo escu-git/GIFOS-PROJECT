@@ -22,12 +22,11 @@
 }
 
 //Trending IMG:
-.trendingImg{
+.img1, .img2, .img3{
     width:200px;
     height:300px;
-    margin:0 20px;
+    margin:10px 20px;
 }
-
 .leftBtn, .rightBtn {
     cursor:pointer;
     margin: 0 10px;
@@ -69,7 +68,7 @@
     height:100%;
 }
 .icons{
-    width:150px;
+    width:100%;
     height:151px;
 }
 //USUARIO Y TITULO DE GIF EN BUSQUEDAS.
@@ -145,4 +144,13 @@
 .favGifs{
     display:flex;
     flex-wrap:wrap;
+}
+.div1{
+    width:100%;
+    height:300px;
+}
+
+.tituloSinGifs{
+    text-align:$centered;
+    color:$aquaGreen;
 }

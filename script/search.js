@@ -69,10 +69,8 @@ let imprimirDOM= (imagen, titulo, user)=>{
     download.src= "assets/icon-download.svg";
     maxImg.src="assets/icon-max-normal.svg";
 
-
     //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
     newGif.addEventListener("mouseover",(event)=>{
-        if(event){
             overlay.classList.add('overlayStyle');
             newGif.style.zIndex = "-1";
             newDiv.style.zIndex = "1";
@@ -81,17 +79,14 @@ let imprimirDOM= (imagen, titulo, user)=>{
             overlay.appendChild(like);
             overlay.appendChild(download);
             overlay.appendChild(maxImg);
-        }
     })
     overlay.addEventListener('mouseleave', (event)=>{
-        if(event){
             overlay.classList.remove('overlayStyle');
             gifTitle.classList.remove('gifTitle');
             userTitle.classList.remove('userTitle');
             overlay.removeChild(like);
             overlay.removeChild(download);
             overlay.removeChild(maxImg);
-        }
     })
 
         //ON HOVER:
@@ -261,87 +256,95 @@ async function sugerencias(){
 }
 
 function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTILIZARSE TANTO EN INDEX, COMO EN FAVORITOS COMO EN MISGIFOS. Si llego con el tiempo la armo. Haciendola genérica y pasando por parámetros todo lo necesario para imprimir en el DOM.
-    if(arrayFavoritos>0){
-    arrayFavoritos.forEach(element=>{
-        //Elementos:
-        let favGifsDivs = document.getElementById('favGifsDiv');
-        let imgDiv = document.createElement('div');
-        let img = document.createElement('img');
-        let overlay = document.createElement('div');
-        let dislike = document.createElement('img'); 
-        let download = document.createElement('img'); 
-        let maxImg = document.createElement('img');
-        let userTitle = document.createElement('h4');
-        let gifTitle = document.createElement('h5');
-        //Propiedades:
-        favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
-        img.src=element;
-        imgDiv.classList.add('newDiv');
-        img.classList.add("imgBox"); //"styles/main.scss"
-        dislike.classList.add('inserted');
-        download.classList.add('inserted');
-        maxImg.classList.add('inserted');
-        dislike.src= "assets/icon-fav.svg";
-        download.src= "assets/icon-download.svg";
-        maxImg.src="assets/icon-max-normal.svg";
-        gifTitle.classList.add('userYTitle');
-        userTitle.classList.add('userYTitle')
-        listenerCambioImg(dislike,'mouseover',"assets/icon-fav-hover.svg");
-        listenerCambioImg(dislike,'mouseleave',"assets/icon-fav.svg");
-        listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg");
-        listenerCambioImg(download,'mouseleave',"assets/icon-download.svg");
-        listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg");
-        listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg");
+let favGifsDivs = document.getElementById('favGifsDiv');
+favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
+    if(arrayFavoritos.length < 1){
+            console.log('Sin imagenes favoritas')
+            let noFavs = document.createElement('img');
+            noFavs.src= 'assets/icon-fav-sin-contenido.svg';
+            let div1 = document.createElement('div');
+            let favGifsDivs = document.getElementById('favGifsDiv');
+            let title = document.createElement('h2');
+            title.classList.add('tituloSinGifs')
+            title.innerHTML='¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!';
+
+            //properties:
+            noFavs.classList.add('icons');
+            div1.classList.add('div1');
         
-        //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
-        imgDiv.addEventListener("mouseover",(event)=>{
+            //DOM:
+            div1.appendChild(noFavs);
+            div1.appendChild(title)
+            favGifsDivs.appendChild(div1);      
+    }else{
+        arrayFavoritos.forEach(element=>{
+            console.log('Imprimiendo tus favoritos')
+            //Elementos:
+            let imgDiv = document.createElement('div');
+            let img = document.createElement('img');
+            let overlay = document.createElement('div');
+            let dislike = document.createElement('img'); 
+            let download = document.createElement('img'); 
+            let maxImg = document.createElement('img');
+            let userTitle = document.createElement('h4');
+            let gifTitle = document.createElement('h5');
+            //Propiedades:
+            img.src=element;
+            imgDiv.classList.add('newDiv');
+            img.classList.add("imgBox"); //"styles/main.scss"
+            dislike.classList.add('inserted');
+            download.classList.add('inserted');
+            maxImg.classList.add('inserted');
+            dislike.src= "assets/icon-fav.svg";
+            download.src= "assets/icon-download.svg";
+            maxImg.src="assets/icon-max-normal.svg";
+            gifTitle.classList.add('userYTitle');
+            userTitle.classList.add('userYTitle')
+            listenerCambioImg(dislike,'mouseover',"assets/icon-fav-hover.svg");
+            listenerCambioImg(dislike,'mouseleave',"assets/icon-fav.svg");
+            listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
+            listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
+            listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
+            listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
+            
+            //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
+            imgDiv.addEventListener("mouseover",(event)=>{
+                if(event){
+                    overlay.classList.add('overlayStyle');
+                    img.style.zIndex = "-1";
+                    imgDiv.style.zIndex = "1";
+                //     userTitle.classList.add('userTitle');
+                // gifTitle.classList.add('gifTitle')
+                overlay.appendChild(dislike);
+                overlay.appendChild(download);
+                overlay.appendChild(maxImg);
+            }
+        })
+        overlay.addEventListener('mouseleave', (event)=>{
             if(event){
-                overlay.classList.add('overlayStyle');
-                img.style.zIndex = "-1";
-                imgDiv.style.zIndex = "1";
-            //     userTitle.classList.add('userTitle');
-            // gifTitle.classList.add('gifTitle')
-            overlay.appendChild(dislike);
-            overlay.appendChild(download);
-            overlay.appendChild(maxImg);
-        }
-    })
-    overlay.addEventListener('mouseleave', (event)=>{
-        if(event){
-            overlay.classList.remove('overlayStyle');
-            // gifTitle.classList.remove('gifTitle');
-            // userTitle.classList.remove('userTitle');
-            overlay.removeChild(dislike);
-            overlay.removeChild(download);
-            overlay.removeChild(maxImg);
-        }
-    })
-    dislike.addEventListener('click',(event)=>{
-        console.log(event)
-        let consulta = event.path[2].childNodes[0].currentSrc
-        let index = arrayFavoritos.indexOf(consulta);
-        arrayFavoritos.splice(index,1);
-        localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
-        favGifsDivs.removeChild(event.path[2])
-        console.log(arrayFavoritos.length);
-    })
-    //DOM
-    imgDiv.appendChild(img);
-    imgDiv.appendChild(overlay);
-    favGifsDivs.appendChild(imgDiv);
-    })
-}
-    else{
-    console.log('no hay imagenes')
-    // let imgIcon = createElement('img');
-    // let div = getElementById(favGifsDivs);
-    // let contenedor = createElement('div');
-    // imgIcon.src = "assets/icon-max-normal.svg";
-    // imgIcon.classList('icons');
-    // contenedor.appendChild(imgIcon)
-    // div.appendChild(contenedor)
-    let texto = createElement('h1');
-    texto.createTextNode('HOLA')
-    favGifsDivs.appendChild(texto)
+                overlay.classList.remove('overlayStyle');
+                // gifTitle.classList.remove('gifTitle');
+                // userTitle.classList.remove('userTitle');
+                overlay.removeChild(dislike);
+                overlay.removeChild(download);
+                overlay.removeChild(maxImg);
+            }
+        })
+        dislike.addEventListener('click',(event)=>{
+            console.log(event)
+            let consulta = event.path[2].childNodes[0].currentSrc
+            let index = arrayFavoritos.indexOf(consulta);
+            arrayFavoritos.splice(index,1);
+            localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
+            favGifsDivs.removeChild(event.path[2])
+            console.log(arrayFavoritos.length);
+            
+        })
+        //DOM
+        imgDiv.appendChild(img);
+        imgDiv.appendChild(overlay);
+        favGifsDivs.appendChild(imgDiv);
+        })
     }
 }
+

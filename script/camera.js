@@ -1,3 +1,4 @@
+const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u"; //API KEY para requests.
 const createBtn = document.getElementById
 var video = document.querySelector('video');
 let visualizeVideo = document.getElementById('visualizeVideo');
@@ -7,13 +8,12 @@ let gifVideo = document.getElementById('gifVideo');
 let form;
 var recorder; // globally accessible
 
-// localStorage.setItem('misGifos',"");
-var idArray =[];
-
+var idArray = []
+idArray = localStorage.getItem('id')
 if(!localStorage.getItem('id')){
     localStorage.setItem('id',[])
 }else{
-    idArray == localStorage.getItem('id');
+    idArray = localStorage.getItem('id');
 }
 //atributos:
 gifVideo.classList.add('gifVideo');
@@ -84,35 +84,46 @@ startBtn.addEventListener('click', ()=>{
 stopBtn.addEventListener('click', ()=>{
     stopBtn.disabled = true;
     recorder.stopRecording(stopRecordingCallback);
-    vidOff()
+    // vidOff()
+    // localstream.getTracks()[0].stop();
 });
 
-uploadBtn.addEventListener('click',()=>{
+uploadBtn.addEventListener('click',async function subirGifo(){
     // enviar gifo.
-    fetch("https://upload.giphy.com/v1/gifs?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u", 
+    await fetch("https://upload.giphy.com/v1/gifs?api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u", 
     {
         method: 'POST',
-        body: form
+        body: form,
+        mode:'cors'
     })
-    .then(res => res.json())
+    .then(res =>{
+        return res.json()})
     .then(res => {
-        console.log("Se envío a GIPHY:", res.data.id);
-        idArray.push(res.data.id);
-        localStorage.setItem('id',idArray)
-        console.log(idArray);
+        console.log(res)
+        console.log(`api.giphy.com/v1/gifs/gif_id=${res.data.id}&api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u`)
+        fetch(`api.giphy.com/v1/gifs?gif_id=${res.data.id}&api_key=5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u`)
+    })
+    .then(res =>{
+        console.log(`RESPONSE ${res}`)
+        res.json()})
+    .then(gif =>{
+        let newGif = new MYGIFO(idArray.length, "Tu", "Sin titulo",gif.data[0].images.original.url)
+        console.log(`Mi nuevo Gif: ${newGif}`)
+        idArray.push(newGif);
+        localStorage.getItem('id',JSON.stringify(idArray))
     })
     .catch(err => {
-        console.log("error.!!!", err);
+        console.log("Éste es el error:", err);
     })
 } )
 
 
 //Apagar cámara después de grabar
-function vidOff() {
+// function vidOff() {
     //clearInterval(theDrawLoop);
     //ExtensionData.vidStatus = 'off';
-    camera.pause();
-    camera.src = "";
-    localstream.getTracks()[0].stop();
-    console.log("La cámara fue apagada");
-  }
+    // camera.pause();
+    // camera.src = "";
+    // localstream.getTracks()[0].stop();
+//     console.log("La cámara fue apagada");
+//   }
