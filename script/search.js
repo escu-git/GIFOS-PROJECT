@@ -69,6 +69,10 @@ let imprimirDOM= (imagen, titulo, user)=>{
     download.src= "assets/icon-download.svg";
     maxImg.src="assets/icon-max-normal.svg";
 
+    if(localStorage.getItem('favoritos').includes(imagen)){ //Si el array ya incluye el GIF, lo elimina:
+        like.src = 'assets/icon-fav-active.svg'; 
+    }
+
     //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
     newGif.addEventListener("mouseover",(event)=>{
             overlay.classList.add('overlayStyle');
