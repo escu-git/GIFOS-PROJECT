@@ -46,8 +46,10 @@
                 border:1px solid black;
             }
         }
-        #div1, #div2, #div3{
-            width:243px; max-width:243px;
+        #img1, #img2, #img3{
+            width:200px;
+            height:300px;
+            margin:10px 20px;;
         }
     }
     .searches{
@@ -72,8 +74,10 @@
         flex-direction:column;
         justify-content:center;
         .socialMedia {
-            margin:0 auto;
-            text-align:center;
+            width:15%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
         }
         h6{
             @include footerText;

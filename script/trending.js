@@ -16,7 +16,6 @@ async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
     //tipoRequest1: gifs / trending
     //tipoRequest2: searches / categories / "search/tags"
     let apiTrending = await fetch(`https://api.giphy.com/v1/${tipoRequest1}/${tipoRequest2}?api_key=${apiKey}&limit=${limit}&rating=g`);
-
     let toArray = await apiTrending.json();
     toArray.data.forEach(array=>{ //Push to array for Trending.
     arrayToPush.push(array);
@@ -45,6 +44,7 @@ async function printTrending(fnTrending, array, num){
     img1.src = array[num].images.downsized.url;
     img2.src = array[num + 1].images.downsized.url;
     img3.src = array[num + 2].images.downsized.url;
+
 };
 
 function violetHover(img){
@@ -73,6 +73,7 @@ rightBtn.addEventListener('click', (event)=>{
 })
 //--------------------------------------
 
+//Eliminar boton DERECHO - Cuando img1 = 1
 ////////SUGERENCIAS DE TRENDING (texto)
 async function textoSugeridos(fnTrending, array){
     await fnTrending

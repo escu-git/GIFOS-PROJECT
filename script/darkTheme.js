@@ -43,33 +43,3 @@ darkModeBtn.addEventListener('click',()=>{
 if(setDarkMode === 'on') {
     darkMode();
 }
-
-
-
-
-
-// darkModeBtn.addEventListener("click",(event)=>{
-//     let themeToggle = document.getElementById("body");
-//     let html = document.getElementById("html");
-//     let dark = themeToggle.classList.toggle("darkMode");
-//     html.classList.toggle("darkHTML")
-
-//     //Cambio de logo según theme
-//     let diurnoLi = document.getElementById("nocturnoDiurnoLi");
-
-//     if(localStorage.getItem('darkMode' == "true")){
-//         logoTheme.src = "assets/logo-mobile-modo-noct.svg";
-//         diurnoLi.innerHTML = "Modo Diurno";
-//     }else{
-//         logoTheme.src = "assets/logo-mobile.svg";
-//         diurnoLi.innerHTML = "Modo Nocturno";
-//     };
-//     if(themeToggle.classList.contains("darkMode")){
-//         logoTheme.src = "assets/logo-mobile-modo-noct.svg";
-//         diurnoLi.innerHTML = "Modo Diurno";
-
-//     }else {
-//         logoTheme.src = "assets/logo-mobile.svg";
-//         diurnoLi.innerHTML = "Modo Nocturno";
-//     }
-// });

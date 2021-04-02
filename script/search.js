@@ -25,20 +25,39 @@ if(localStorage.getItem('favoritos').length > 0){
 
 let num = 0;
 let limit = 12;
+let currentQuery, resultOffSet, totalCount;
+
 //Input de búsqueda *** Acá se coloca el valor a buscar, y envía el valor a printSearch con buscarGifs como param
 ///////////////////////
 inputSearch.addEventListener("keyup", (event)=>{
+    currentQuery = inputSearch.value;
+    console.log(currentQuery)
+    resultOffSet = 0;
     if(event.keyCode === 13){ //Activa búsqueda con enter.
-        printSearch(buscarGifs(inputSearch.value,"gifs","search",limit,0),inputSearch.value);//Busca en API e imprime en DOM.
+        printSearch(buscarGifs(currentQuery,"gifs","search",3,0),currentQuery);//Busca en API e imprime en DOM.
     inputSearch.value = ""; //Vaciar casilla de búsqueda.
     }
 });
+
+//See more button:
+verMas.addEventListener('click',(event)=>{
+    resultOffSet += 2;
+    printSearch(buscarGifs(currentQuery,"gifs","search",resultOffSet,0),currentQuery);
+})
 
 //////////////SEARCH GIFS FUNCTION
 async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
     let urlSearch = `https://api.giphy.com/v1/${tipoRequest1}/${tipoRequest2}?api_key=${apiKey}&q=${valorDeInput}&limit=${limit}&offset=${num}&rating=g&lang=es`;
     let response = await fetch(urlSearch);
-    return response.json();
+    results = response.json();
+
+    //totalCount = await results.data.length;
+    //console.log(totalCount)
+    
+    if(resultOffSet > totalCount){
+        console.log('No more results to show!!!')
+    }
+    return results
 }
 //---------------------------------
 
@@ -69,9 +88,18 @@ let imprimirDOM= (imagen, titulo, user)=>{
     download.src= "assets/icon-download.svg";
     maxImg.src="assets/icon-max-normal.svg";
 
-    if(localStorage.getItem('favoritos').includes(imagen)){ //Si el array ya incluye el GIF, lo elimina:
-        like.src = 'assets/icon-fav-active.svg'; 
-    }
+    download.addEventListener('click',(event)=>{
+        console.log(event.path[2].childNodes[0].currentSrc)
+        let source = event.path[2].childNodes[0].currentSrc;
+        let link = document.createElement('a');
+        link.href = source;
+        link.target ='blank'
+        link.download = 'downloadedGif.jpg'
+        link.click()
+        link.removeChild()
+            //VER DESCARGA DEL ARCHIVO
+    })
+
 
     //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
     newGif.addEventListener("mouseover",(event)=>{
@@ -185,6 +213,7 @@ async function printSearch(fnBuscar, textoBuscado) {
     //Array e imagenes
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
+        console.log(array)
         printSearchArray.push(array);
         printSearchArray.forEach(imagenes=>{
             imprimirDOM(imagenes.images.downsized.url, imagenes.title, imagenes.username)
@@ -202,11 +231,6 @@ async function printSearch(fnBuscar, textoBuscado) {
     }
 };
 
-verMas.addEventListener('click',(event)=>{
-    limit+12;
-    printSearch(buscarGifs(inputSearch.value,"gifs","search",limit,0),inputSearch.value);
-    
-})
 
 
 //--------------------------- Titulo de búsqueda en DOM -----
@@ -228,8 +252,10 @@ inputSearch.addEventListener("keyup",(event)=>{
     if(inputSearch.value != ""){
         divSugerencia.classList.add("sugerencia");
         inputSearch.classList.add("whenSugerencia");
+        inputSearch.classList.remove('search')
     }else{
         divSugerencia.classList.remove("sugerencia");
+        inputSearch.classList.add('search')
         inputSearch.classList.remove("whenSugerencia");
     }
     sugerencias();

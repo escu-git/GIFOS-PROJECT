@@ -269,9 +269,10 @@ body h1, body h2, body h3, body h4, body h6 {
   border: 1px solid black;
 }
 
-.trendingContainer #div1, .trendingContainer #div2, .trendingContainer #div3 {
-  width: 243px;
-  max-width: 243px;
+.trendingContainer #img1, .trendingContainer #img2, .trendingContainer #img3 {
+  width: 200px;
+  height: 300px;
+  margin: 10px 20px;
 }
 
 .searches {
@@ -316,8 +317,14 @@ footer {
 }
 
 footer .socialMedia {
-  margin: 0 auto;
-  text-align: center;
+  width: 15%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 footer h6 {
@@ -445,11 +452,6 @@ footer .copyright span {
   background-color: white;
 }
 
-.darkMode .introGifos #search {
-  border-color: white;
-  background-color: transparent;
-}
-
 .darkMode .trendingContainer {
   background-color: #222326;
 }
@@ -470,8 +472,19 @@ footer .copyright span {
   z-index: 9999;
 }
 
+.introGifos .search {
+  border-color: white;
+  background-color: transparent;
+}
+
 .whenSugerencia {
   border-radius: 27px 27px 0px 0px;
+  width: 322px;
+  max-width: 334px;
+  height: 50px;
+  border: 2px solid #572EE5;
+  background-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .sugerencia {
@@ -487,10 +500,10 @@ footer .copyright span {
   border-top: 5px black solid;
 }
 
-.trendingImg {
+.img1, .img2, .img3 {
   width: 200px;
   height: 300px;
-  margin: 0 20px;
+  margin: 10px 20px;
 }
 
 .leftBtn, .rightBtn {

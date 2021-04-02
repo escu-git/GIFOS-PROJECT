@@ -5,8 +5,19 @@
 }
 //Search input
 
+.introGifos {
+    .search{
+        border-color:$white;
+        background-color:transparent;
+    }
+}
 .whenSugerencia{
     border-radius: 27px 27px 0px 0px;
+    width:322px; max-width:334px;
+    height: 50px;
+    border: 2px solid $lightPurple;
+    background-color: transparent;
+    border-bottom-color:transparent;
 }
 .sugerencia{
     width:325px; max-width:334px;
@@ -15,6 +26,7 @@
     border-top:0px;
     border-radius:0px 0px 27px 27px;
 }
+
 
 //Cambio color barra superior - Darkmode
 .darkHTML{
