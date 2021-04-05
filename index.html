@@ -33,13 +33,16 @@
 <main>
     <section class="introGifos">
         <h1>Inspírate, busca, guarda, y crea los mejores <span>gifos</span></h1>
-        <img src="assets/ilustra_header.svg" alt="Comunidad GIFOS">
-        <input type="text" id="search" placeholder="Busca GIFOS y más" class="search" autocomplete="off">
+        <img src="assets/ilustra_header.svg" alt="Comunidad GIFOS" id="comunidad">
+        <div id="searchDiv">   
+            <input type="text" id="search" placeholder="Busca GIFOS y más" class="search" autocomplete="off" maxlength="22">
+        </div>
         <div id="sugerencia"></div>
-        <div><h2>Trending:</h2></div>
         <div id="sugerenciaTitle"></div>
-        <div id="sugeridos"></div>
-        <h2 id="trends"></h2>
+        <div><h2>Trending:</h2></div>
+        <div id="sugeridos">
+            <h2 id="trends"></h2>
+        </div>
     </section>
     <!-- SEARCH GIFS -->
     <section id="searches" class="searches">

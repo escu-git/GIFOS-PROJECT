@@ -9,8 +9,16 @@ let searchesDiv = document.getElementById('searches');
 const divSearch = document.getElementById("searchContainer");
 const inputSearch = document.getElementById("search");
 const divSugerencia = document.getElementById("sugerencia");//Div sugerencias
+const cancelSearch = document.createElement('img')
+cancelSearch.src = 'assets/close.svg';
+cancelSearch.style.display='none';
+cancelSearch.style.cursor = 'pointer';
+const searchDiv = document.getElementById('searchDiv');
 const verMas = document.createElement('img');
-verMas.src = "assets/CTA-ver-mas.svg";
+if(localStorage.getItem('darkMode', 'null')){
+    verMas.src='assets/CTA-ver-mas.svg';  
+} 
+searchDiv.appendChild(cancelSearch)
 
 //ARRAY LOCALSTORAGE:
 if(localStorage.getItem('favoritos') === null){
@@ -28,15 +36,31 @@ let limit = 12;
 let currentQuery, resultOffSet, totalCount;
 
 //Input de búsqueda *** Acá se coloca el valor a buscar, y envía el valor a printSearch con buscarGifs como param
-///////////////////////
+
+
+
 inputSearch.addEventListener("keyup", (event)=>{
     currentQuery = inputSearch.value;
     console.log(currentQuery)
-    resultOffSet = 0;
+    resultOffSet = 3;
+    cancelSearch.classList.add('cancelSearch');
+    cancelSearch.style.display='block';
     if(event.keyCode === 13){ //Activa búsqueda con enter.
         printSearch(buscarGifs(currentQuery,"gifs","search",3,0),currentQuery);//Busca en API e imprime en DOM.
-    inputSearch.value = ""; //Vaciar casilla de búsqueda.
+        inputSearch.value = ""; //Vaciar casilla de búsqueda.
+        cancelSearch.style.display='none';
+        cancelSearch.classList.remove('cancelSearch');
     }
+});
+
+cancelSearch.addEventListener('click',(event)=>{
+    inputSearch.value="";
+    cancelSearch.classList.remove('cancelSearch');
+    cancelSearch.style.display='none';
+    divSugerencia.innerHTML="";
+    divSugerencia.classList.remove("sugerencia");
+        inputSearch.classList.add('search')
+        inputSearch.classList.remove("whenSugerencia");
 });
 
 //See more button:
@@ -59,6 +83,7 @@ async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
     }
     return results
 }
+
 //---------------------------------
 
 //////////////PRINT CONTENT IN DOM FUNCTION
@@ -202,6 +227,7 @@ function listenerCambioImg(objeto,accion,imagen){
 ///////////////////////Imprimir imagenes y texto
 async function printSearch(fnBuscar, textoBuscado) {
     let verMasDiv = document.createElement('div');
+    let filtrarArray = [];
     let printSearchArray = []; //Array con contenido de API
     if(printSearchArray.length > 0){
         printSearchArray=[];
@@ -214,11 +240,14 @@ async function printSearch(fnBuscar, textoBuscado) {
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
         console.log(array)
-        printSearchArray.push(array);
+        filtrarArray.push(array);
+        printSearchArray = filtrarArray.filter((item, index)=>{
+            return filtrarArray.indexOf(item) === index;
+        })
+        console.log(printSearchArray)
         printSearchArray.forEach(imagenes=>{
             imprimirDOM(imagenes.images.downsized.url, imagenes.title, imagenes.username)
-            
-        })
+    })
     })
     verMasDiv.appendChild(verMas);
     searchesDiv.appendChild(verMasDiv);
@@ -263,6 +292,9 @@ inputSearch.addEventListener("keyup",(event)=>{
 
 //SUGGESTIONS FUNCTION
 async function sugerencias(){
+    let lupa = document.createElement('img');
+    lupa.src = 'assets/icon-search.svg';
+    lupa.classList.add('lupa');
     let sugerenciasArray=[];
     var sugerenciaTitle = document.createElement('h3');
     divSugerencia.innerHTML = "";
@@ -271,9 +303,15 @@ async function sugerencias(){
     sugerencias.data.forEach(array =>{
         sugerenciasArray.push(array.name);
     });
+    console.log(sugerenciasArray)
     for(let i=0;i<sugerenciasArray.length;i++){
+    let sugerencia = document.createElement('div');
+    sugerencia.classList.add('sugerenciaDiv')
+    sugerencia.appendChild(lupa);
     sugerenciaTitle.innerHTML = sugerenciasArray[i];
-    divSugerencia.appendChild(sugerenciaTitle);
+    sugerenciaTitle.style.cursor = 'pointer';
+    sugerencia.appendChild(sugerenciaTitle)
+    divSugerencia.appendChild(sugerencia);
     }
     if(inputSearch.value ==""){
     divSugerencia.innerHTML="";
@@ -281,6 +319,13 @@ async function sugerencias(){
 
     sugerenciaTitle.onclick = (event)=>{
         let buscar = event.path[0].innerHTML;
+        inputSearch.value="";
+        cancelSearch.classList.remove('cancelSearch');
+        cancelSearch.style.display='none';
+        divSugerencia.innerHTML="";
+        divSugerencia.classList.remove("sugerencia");
+            inputSearch.classList.add('search')
+            inputSearch.classList.remove("whenSugerencia");
         printSearch(buscarGifs(buscar,"gifs","search",3,0),buscar)
     }
 }
