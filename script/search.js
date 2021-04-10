@@ -334,23 +334,23 @@ function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTI
 let favGifsDivs = document.getElementById('favGifsDiv');
 favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
     if(arrayFavoritos.length < 1){
-            console.log('Sin imagenes favoritas')
-            let noFavs = document.createElement('img');
-            noFavs.src= 'assets/icon-fav-sin-contenido.svg';
-            let div1 = document.createElement('div');
-            let favGifsDivs = document.getElementById('favGifsDiv');
-            let title = document.createElement('h2');
-            title.classList.add('tituloSinGifs')
-            title.innerHTML='¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!';
+        console.log('Sin imagenes favoritas')
+        let noFavs = document.createElement('img');
+        noFavs.src= 'assets/icon-fav-sin-contenido.svg';
+        let div1 = document.createElement('div');
+        let favGifsDivs = document.getElementById('favGifsDiv');
+        let title = document.createElement('h2');
+        title.classList.add('tituloSinGifs')
+        title.innerHTML='¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!';
 
-            //properties:
-            noFavs.classList.add('icons');
-            div1.classList.add('div1');
-        
-            //DOM:
-            div1.appendChild(noFavs);
-            div1.appendChild(title)
-            favGifsDivs.appendChild(div1);      
+        //Properties:
+        noFavs.classList.add('icons');
+        div1.classList.add('div1');
+
+        //DOM:
+        div1.appendChild(noFavs);
+        div1.appendChild(title)
+        favGifsDivs.appendChild(div1);      
     }else{
         arrayFavoritos.forEach(element=>{
             console.log('Imprimiendo tus favoritos')

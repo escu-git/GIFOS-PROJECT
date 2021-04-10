@@ -21,10 +21,10 @@ const darkMode = ()=>{ //Todos los cambios al hacer dark o clear mode:
     diurnoLi.innerHTML = "Modo Diurno";    
 }
 createGifosBtn.onclick= ()=>{
-    window.location = "createGifos.html"
+    window.location = "createGifos.html";
 }
 logoTheme.onclick= ()=>{
-    window.location = "index.html"
+    window.location = "index.html";
 }
 
 darkModeBtn.addEventListener('click',()=>{

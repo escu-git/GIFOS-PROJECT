@@ -4,7 +4,9 @@ const instagram = document.getElementById('instagram');
 
 facebook.addEventListener('mouseover',()=>{
     facebook.style.cursor= 'pointer'
+    facebook.style.animation =''
 })
+
 facebook.addEventListener('click',(event)=>{
     let link = document.createElement('a')
     link.href= "https://www.facebook.com"
@@ -14,10 +16,12 @@ facebook.addEventListener('click',(event)=>{
 
 twitter.addEventListener('mouseover',()=>{
     twitter.style.cursor= 'pointer'
+
 })
+
 twitter.addEventListener('click',(event)=>{
-    let link = document.createElement('a')
-    link.href= "https://www.twitter.com"
+    let link = document.createElement('a');
+    link.href= "https://www.twitter.com";
 
     link.click()
 })
@@ -25,6 +29,7 @@ twitter.addEventListener('click',(event)=>{
 instagram.addEventListener('mouseover',()=>{
     instagram.style.cursor= 'pointer'
 })
+
 instagram.addEventListener('click',(event)=>{
     let link = document.createElement('a')
     link.href= "https://www.instagram.com"
