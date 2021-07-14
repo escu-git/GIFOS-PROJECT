@@ -67,11 +67,11 @@
         .trendingContainer {
             background-color:$backgroundColor;
             .carrouselContainer{
-            display:flex;
-            flex-wrap:nowrap;
-            justify-content: space-between;
-            overflow: hidden;
-            width:100%;
+                display:flex;
+                flex-wrap:nowrap;
+                justify-content: space-between;
+                overflow: hidden;
+                width:100%;
                 .trendingGif{
                     width:243px;
                     height:187px;
@@ -82,9 +82,6 @@
                     height: 150px;
                     border:1px solid black;
                 }
-            }
-            #div1, #div2, #div3{
-                width:243px; max-width:243px;
             }
         }
         footer{
@@ -119,4 +116,15 @@
             }
         }
     }   
+    .sugeridosDiv{
+        display:flex;
+        flex-direction:row;
+    }
+
+    .trendingContainer{
+        #img1, #img2, #img3{
+            width:200px;
+            height:300px;
+        }
+    }
 }

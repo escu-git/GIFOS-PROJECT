@@ -11,10 +11,11 @@ let valorInicial=0; // Para carousel
 trendingArray=[]; //Array para printTrending()
 categoriesArray=[]; //Array para categorias textoSugeridos()
 
+let favoritosArray
 if(localStorage.getItem('favoritos').length > 0){
-    arrayFavoritos = JSON.parse(localStorage.getItem('favoritos'));
+    favoritosArray = JSON.parse(localStorage.getItem('favoritos'));
 }else{
-    arrayFavoritos = [];
+    favoritosArray = [];
 }
 
 const like = document.createElement('img'); 
@@ -26,8 +27,11 @@ like.src= "assets/icon-fav.svg";
 download.src= "assets/icon-download.svg";
 maxImg.src="assets/icon-max-normal.svg";
 like.classList.add('inserted');
+like.setAttribute('id', 'like');
 download.classList.add('inserted');
+download.setAttribute('id','download');
 maxImg.classList.add('inserted');
+maxImg.setAttribute('id','maxImg');
 gifTitle.classList.add('userYTitle');
 userTitle.classList.add('userYTitle')
 
@@ -47,24 +51,62 @@ download.addEventListener('click',(event)=>{
     link.download = 'downloadedGif.jpg'
     link.click()
     link.removeChild()
-        //VER DESCARGA DEL ARCHIVO
+        //!VER DESCARGA DEL ARCHIVO
+})
+
+maxImg.addEventListener('click',(event)=>{
+    //Create elements:
+    let body = document.getElementById('body');
+    let agrandarImg = document.createElement('div')
+    let img = document.createElement('img')
+    let exit = document.createElement('img');
+    let divInfo = document.createElement('div');
+    let userTitleAgrandar = document.createElement('h4');
+    let gifTitleAgrandar = document.createElement('h5');
+    like.style.gridArea = 'like';
+    download.style.gridArea = 'download';
+    //Atributos:
+    // userTitleAgrandar.innerHTML=user
+    // gifTitleAgrandar.innerHTML=titulo
+    exit.src="assets/close.svg"
+    exit.classList.add('exit');
+    exit.addEventListener('click',(event)=>{
+    body.removeChild(agrandarImg);
+    })
+    divInfo.classList.add('divInfo');
+    agrandarImg.classList.add('divAgrandarImg')
+    img.classList.add('agrandarImg')
+    img.src=event.path[2].children[0].currentSrc 
+    userTitle.classList.add('userTitleAgrandar');
+    gifTitle.classList.add('gifTitleAgrandar')
+    //DOM:
+    divInfo.appendChild(userTitleAgrandar);
+    divInfo.appendChild(gifTitleAgrandar);
+    divInfo.appendChild(like);
+    divInfo.appendChild(download);
+    agrandarImg.appendChild(img);
+    agrandarImg.appendChild(exit);
+    agrandarImg.appendChild(divInfo);
+    body.appendChild(agrandarImg);
 })
 
 like.addEventListener('click',(event)=>{
     array = [];
-    let consulta = event.path[2].childNodes[0].currentSrc //ACÁ VOLCAR EL OBJETO PARA TOMAR TITULOS Y DEMÁS
-    if(arrayFavoritos.includes(consulta)){ //Si el array ya incluye el GIF, lo elimina:
-        let index = arrayFavoritos.indexOf(consulta);
-        arrayFavoritos.splice(index,1);
-        console.log(arrayFavoritos);
+    let consulta = event.path[2].childNodes[0].currentSrc;//ACÁ VOLCAR EL OBJETO PARA TOMAR TITULOS Y DEMÁS
+    if(favoritosArray.includes(consulta)){ //Si el array ya incluye el GIF, lo elimina: 
+        let index = favoritosArray.indexOf(consulta);
+        favoritosArray.splice(index,1);
+        console.log("Estos son tus favoritos:"+favoritosArray);
+        showLikes(event.path[1].offsetParent,"¡Eliminado de favoritos!");
     }else{ //Si el array no incluye el GIF, lo suma:
-        arrayFavoritos.push(consulta);
-        console.log(arrayFavoritos);
+        favoritosArray.push(consulta);
+        console.log("Estos son tus favoritos:"+favoritosArray);
+        showLikes(event.path[1].offsetParent,"¡Añadido a favoritos!");
     }//Acá se termina la logica de favoritos
-    localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
+    localStorage.setItem('favoritos', JSON.stringify(favoritosArray));
 })
 
-/////////FUNCION PARA API REQUEST:
+//*FUNCION PARA API REQUEST:
 async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
     //tipoRequest1: gifs / trending
     //tipoRequest2: searches / categories / "search/tags"
@@ -96,6 +138,7 @@ async function printTrending(fnTrending, array, num){
     if(num <0 || num > array.length){ 
         valorInicial = num = 0;
     }
+    console.log(array)
     img1.src="";
     img2.src="";
     img3.src="";
@@ -128,7 +171,6 @@ function violetHover(image){
     violetLayer.appendChild(like);
     violetLayer.appendChild(download);
     violetLayer.appendChild(maxImg);
-    console.log('VioletHover () ....')
 }
 
 function removeVioletHover(image){
@@ -138,7 +180,6 @@ function removeVioletHover(image){
     violetLayer.removeChild(like);
     violetLayer.removeChild(download);
     violetLayer.removeChild(maxImg);
-    console.log('RemoveVioletHover () ....')
 }
 //-----------------------------------
 
@@ -158,17 +199,32 @@ rightBtn.addEventListener('click', (event)=>{
 })
 //--------------------------------------
 
-////////SUGERENCIAS DE TRENDING (texto)
-async function textoSugeridos(fnTrending, array){
-    await fnTrending
-    let sugeridosDiv = document.getElementById('sugeridos');
-    let textoTrends = document.createElement('h4');
-    textoTrends.innerHTML = `${array[0]}, ${array[1]}, ${array[2]}, ${array[3]}, ${array[4]}.`;
-    sugeridosDiv.appendChild(textoTrends)
-    
-}
-//---------------------------------------
 
 printTrending(api("gifs","trending",9,trendingArray),trendingArray, valorInicial)
 
 textoSugeridos(api("trending","searches",5,categoriesArray), categoriesArray);
+
+function listenerCambioImg(objeto,accion,imagen){
+    objeto.addEventListener(accion,(event)=>{
+        objeto.src=imagen
+    })
+};
+
+function showLikes(target, mensaje){
+    let messageContainer = document.createElement('div');
+    let message = document.createElement('h5');
+
+    messageContainer.setAttribute("style", "opacity:95%; width: 55px; height: 55px; background-color: #572EE5; border-radius:50px; position:absolute; top:0px; left:-60px; padding:2px");
+    messageContainer.setAttribute("id","messageContainer");
+    message.setAttribute("style","font-size:9px; color:white")
+    message.innerHTML = `${mensaje}`
+
+    messageContainer.appendChild(message);
+    target.appendChild(messageContainer);
+    setTimeout(unshowLikes,2000)
+};
+
+function unshowLikes(){
+    let mensaje = document.getElementById('messageContainer');
+    mensaje.remove()
+};

@@ -72,11 +72,7 @@
     border-top: 5px black solid;
 }
 
-//Trending IMG:
-.img1, .img2, .img3{
-    width:200px;
-    height:300px;
-}
+
 .leftBtn, .rightBtn {
     cursor:pointer;
     margin: 0 10px;
@@ -89,7 +85,7 @@
 //DIVS DE COLOR EN SEARCHBAR
 .newDiv{
     position: relative;
-    width:40%;
+    width:260px;
     height:200px;
     background-color:transparent;
     padding:0;
@@ -122,22 +118,23 @@
     height:151px;
 }
 //USUARIO Y TITULO DE GIF EN BUSQUEDAS.
-    //Solucionar temas de visualización!!!!!!!!!!!!!
+    //!Solucionar temas de visualización!!!!!!!!!!!!!
 .userYTitle{
     display:none;
+    font-size:16px;
 }
 
 .userTitle{
+    top:140;
+    left:0;
     display:block;
     position:absolute;
-    bottom:0;left:0;
+    top:135;left:0;
     color:white;
 }
 .gifTitle{
     display:block;
     position:absolute;
-    bottom:-10;
-    left:0;
     color:white;
     font-weight: bold;
 }
@@ -166,8 +163,13 @@
     cursor:pointer;
 }
 .divInfo{
-    display:block;
-    background-color:grey;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:50px;
+    grid-template-areas:
+    "user none download like";
+    width:48%;
+    margin:auto;
     z-index:6;
 }
 .userTitleAgrandar{
@@ -203,4 +205,12 @@
 .tituloSinGifs{
     text-align:$centered;
     color:$aquaGreen;
+}
+
+.sugeridosDiv{
+    display:flex;
+    flex-direction:column;
+}
+.textoTrending{
+    margin: 0 6px;
 }

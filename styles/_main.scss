@@ -47,9 +47,8 @@
             }
         }
         #img1, #img2, #img3{
-            width:200px;
-            height:300px;
-            margin:10px 20px;;
+            width:100px;
+            height:200px;
         }
     }
     .searches{
@@ -134,6 +133,7 @@
             border:1px solid $lightPurple;
             border-radius: 25px;
             text-transform:uppercase;
+            
         }
     }
     .mainIcon{

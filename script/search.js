@@ -4,27 +4,31 @@ const favoritos = document.getElementById("favs")
 const misGifos = document.getElementById("misGifos")
 const gifCreateBtn = document.getElementById("createGif")
 let searchesDiv = document.getElementById('searches');
+let darkStyle = localStorage.getItem('darkMode')
 
 //SEARCH SECTION:
 const divSearch = document.getElementById("searchContainer");
 const inputSearch = document.getElementById("search");
-const divSugerencia = document.getElementById("sugerencia");//Div sugerencias
+const divSugerencia = document.getElementById("sugerencia");
 const cancelSearch = document.createElement('img')
-cancelSearch.src = 'assets/close.svg';
+darkStyle === 'on' ? cancelSearch.src = 'assets/close-modo-noct.svg' : cancelSearch.src = 'assets/close.svg'
+cancelSearch.setAttribute('id', 'cancelSearch')
 cancelSearch.style.display='none';
 cancelSearch.style.cursor = 'pointer';
 const searchDiv = document.getElementById('searchDiv');
+
 const verMas = document.createElement('img');
-if(localStorage.getItem('darkMode', 'null')){
-    verMas.src='assets/CTA-ver-mas.svg';  
-} 
+verMas.src= 'assets/CTA-ver-mas.svg'
+listenerCambioImg(verMas,"mouseover","assets\CTA-ver-mas-hover.svg");
+listenerCambioImg(verMas,'mouseleave','assets/CTA-ver-mas.svg')
+
 searchDiv.appendChild(cancelSearch)
 
 //ARRAY LOCALSTORAGE:
 if(localStorage.getItem('favoritos') === null){
     localStorage.setItem('favoritos',"") //Esto chequea si la key 'favoritos' existe en localStorage, caso contrario, la crea.
 }
-let arrayFavoritos; //
+let arrayFavoritos; 
 if(localStorage.getItem('favoritos').length > 0){
     arrayFavoritos = JSON.parse(localStorage.getItem('favoritos'));
 }else{
@@ -35,20 +39,20 @@ let num = 0;
 let limit = 12;
 let currentQuery, resultOffSet, totalCount;
 
-//Input de búsqueda *** Acá se coloca el valor a buscar, y envía el valor a printSearch con buscarGifs como param
-
-
-
 inputSearch.addEventListener("keyup", (event)=>{
     currentQuery = inputSearch.value;
-    console.log(currentQuery)
-    resultOffSet = 3;
+    resultOffSet = 2;
     cancelSearch.classList.add('cancelSearch');
     cancelSearch.style.display='block';
-    if(event.keyCode === 13){ //Activa búsqueda con enter.
+    if(event.keyCode === 13){ //Inicia búsqueda al oprimir ENTER
         printSearch(buscarGifs(currentQuery,"gifs","search",3,0),currentQuery);//Busca en API e imprime en DOM.
         inputSearch.value = ""; //Vaciar casilla de búsqueda.
         cancelSearch.style.display='none';
+        cancelSearch.classList.remove('cancelSearch');
+    }
+    if(event.keyCode === 27 || inputSearch.value ==""){ //Se cierra la búsqueda al oprimir ESC
+        inputSearch.value = "";
+        cancelSearch.style.display = 'none';
         cancelSearch.classList.remove('cancelSearch');
     }
 });
@@ -63,6 +67,7 @@ cancelSearch.addEventListener('click',(event)=>{
         inputSearch.classList.remove("whenSugerencia");
 });
 
+
 //See more button:
 verMas.addEventListener('click',(event)=>{
     resultOffSet += 2;
@@ -75,9 +80,6 @@ async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
     let response = await fetch(urlSearch);
     results = response.json();
 
-    //totalCount = await results.data.length;
-    //console.log(totalCount)
-    
     if(resultOffSet > totalCount){
         console.log('No more results to show!!!')
     }
@@ -126,7 +128,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
     })
 
 
-    //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
+    //*MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
     newGif.addEventListener("mouseover",(event)=>{
             overlay.classList.add('overlayStyle');
             newGif.style.zIndex = "-1";
@@ -167,15 +169,18 @@ let imprimirDOM= (imagen, titulo, user)=>{
         let index = arrayFavoritos.indexOf(consulta);
         arrayFavoritos.splice(index,1);
         console.log(arrayFavoritos);
+        showLikes(event.path[1].offsetParent,"¡Eliminado de favoritos!");
     }else{ //Si el array no incluye el GIF, lo suma:
         arrayFavoritos.push(consulta);
         console.log(arrayFavoritos);
+        showLikes(event.path[1].offsetParent,"¡Añadido a favoritos!");
     }//Acá se termina la logica de favoritos
     localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
+    imprimirFavs(arrayFavoritos)
 })
-    //AGRANDAR IMAGEN con click en maxImg:
+    //*AGRANDAR IMAGEN con click en maxImg:
     maxImg.addEventListener('click',(event)=>{
-        //Create elements:
+        //*Create elements:
         let body = document.getElementById('body');
         let agrandarImg = document.createElement('div')
         let img = document.createElement('img')
@@ -183,7 +188,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
         let divInfo = document.createElement('div');
         let userTitleAgrandar = document.createElement('h4');
         let gifTitleAgrandar = document.createElement('h5');
-        //Atributos:
+        //*Atributos:
         userTitleAgrandar.innerHTML=user
         gifTitleAgrandar.innerHTML=titulo
         exit.src="assets/close.svg"
@@ -197,7 +202,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
         img.src=event.path[2].children[0].currentSrc;
         userTitle.classList.add('userTitleAgrandar');
         gifTitle.classList.add('gifTitleAgrandar')
-        //DOM:
+        //*DOM:
         divInfo.appendChild(userTitleAgrandar);
         divInfo.appendChild(gifTitleAgrandar);
         divInfo.appendChild(like);
@@ -208,7 +213,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
         body.appendChild(agrandarImg);
     })
 
-        //Mandar al DOM
+        //*Mandar al DOM
     divSearch.appendChild(newDiv);
     newDiv.appendChild(newGif);
     newDiv.appendChild(overlay);
@@ -216,7 +221,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
     overlay.appendChild(gifTitle)
 };
 
-//Función para cambiar imagenes:
+//*Función para cambiar imagenes:
 function listenerCambioImg(objeto,accion,imagen){
     objeto.addEventListener(accion,(event)=>{
         objeto.src=imagen
@@ -224,7 +229,7 @@ function listenerCambioImg(objeto,accion,imagen){
 }
 
 //------------------------------
-///////////////////////Imprimir imagenes y texto
+//*Imprimir imagenes y texto
 async function printSearch(fnBuscar, textoBuscado) {
     let verMasDiv = document.createElement('div');
     let filtrarArray = [];
@@ -236,33 +241,30 @@ async function printSearch(fnBuscar, textoBuscado) {
     if(divSearch.hasChildNodes()){
         divSearch.innerHTML = ""; //Borrar busquedas anteriores, si es que las hay.
     }
-    //Array e imagenes
+//*Array e imagenes
     let apiArray = await fnBuscar
     apiArray.data.forEach(array=>{
-        console.log(array)
+        // console.log(array)
         filtrarArray.push(array);
         printSearchArray = filtrarArray.filter((item, index)=>{
             return filtrarArray.indexOf(item) === index;
         })
         console.log(printSearchArray)
+
+        
         printSearchArray.forEach(imagenes=>{
             imprimirDOM(imagenes.images.downsized.url, imagenes.title, imagenes.username)
-    })
+        })
+        
     })
     verMasDiv.appendChild(verMas);
     searchesDiv.appendChild(verMasDiv);
     listenerCambioImg(verMas, 'mouseover', "assets/CTA-ver-mas-hover.svg");
     listenerCambioImg(verMas, 'mouseleave', "assets/CTA-ver-mas.svg");
-    if(localStorage.getItem('darkMode', 'on')){
-        verMas.src="assets/CTA-ver+-modo-noc.svg"
-        listenerCambioImg(verMas,"mouseover","assets/CTA-ver+hover-modo-noc.svg");
-        listenerCambioImg(verMas,'mouseleave','assets/CTA-ver+-modo-noc.svg')
-    }
+
 };
 
-
-
-//--------------------------- Titulo de búsqueda en DOM -----
+//*Titulo de búsqueda en DOM -----
 function changeTitle(textoBuscado){
     let trendingTitle = document.createElement('h2');
     let texto = document.createTextNode(textoBuscado);
@@ -276,7 +278,7 @@ function changeTitle(textoBuscado){
 }
 //-------------------------------------
 
-///////////////SEARCH & AUTOCOMPLETE:
+//*SEARCH & AUTOCOMPLETE:
 inputSearch.addEventListener("keyup",(event)=>{
     if(inputSearch.value != ""){
         divSugerencia.classList.add("sugerencia");
@@ -330,59 +332,59 @@ async function sugerencias(){
     }
 }
 
-function imprimirFavs(array){ //TODO ESTO PUEDE ARMARSE EN UNA FUNCIÓN PARA UTILIZARSE TANTO EN INDEX, COMO EN FAVORITOS COMO EN MISGIFOS. Si llego con el tiempo la armo. Haciendola genérica y pasando por parámetros todo lo necesario para imprimir en el DOM.
+function imprimirFavs(array){
 let favGifsDivs = document.getElementById('favGifsDiv');
 favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
-    if(arrayFavoritos.length < 1){
-        console.log('Sin imagenes favoritas')
-        let noFavs = document.createElement('img');
-        noFavs.src= 'assets/icon-fav-sin-contenido.svg';
-        let div1 = document.createElement('div');
-        let favGifsDivs = document.getElementById('favGifsDiv');
-        let title = document.createElement('h2');
-        title.classList.add('tituloSinGifs')
-        title.innerHTML='¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!';
-
-        //Properties:
-        noFavs.classList.add('icons');
-        div1.classList.add('div1');
-
-        //DOM:
-        div1.appendChild(noFavs);
-        div1.appendChild(title)
-        favGifsDivs.appendChild(div1);      
-    }else{
-        arrayFavoritos.forEach(element=>{
-            console.log('Imprimiendo tus favoritos')
-            //Elementos:
-            let imgDiv = document.createElement('div');
-            let img = document.createElement('img');
-            let overlay = document.createElement('div');
-            let dislike = document.createElement('img'); 
-            let download = document.createElement('img'); 
-            let maxImg = document.createElement('img');
-            let userTitle = document.createElement('h4');
-            let gifTitle = document.createElement('h5');
-            //Propiedades:
-            img.src=element;
-            imgDiv.classList.add('newDiv');
-            img.classList.add("imgBox"); //"styles/main.scss"
-            dislike.classList.add('inserted');
-            download.classList.add('inserted');
-            maxImg.classList.add('inserted');
-            dislike.src= "assets/icon-fav.svg";
-            download.src= "assets/icon-download.svg";
-            maxImg.src="assets/icon-max-normal.svg";
-            gifTitle.classList.add('userYTitle');
-            userTitle.classList.add('userYTitle')
-            listenerCambioImg(dislike,'mouseover',"assets/icon-fav-hover.svg");
-            listenerCambioImg(dislike,'mouseleave',"assets/icon-fav.svg");
-            listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
-            listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
-            listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
-            listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
-            
-            //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
+if(array.length < 1){
+    console.log('Sin imagenes favoritas')
+    let noFavs = document.createElement('img');
+    noFavs.src= 'assets/icon-fav-sin-contenido.svg';
+    let div1 = document.createElement('div');
+    let favGifsDivs = document.getElementById('favGifsDiv');
+    let title = document.createElement('h2');
+    title.classList.add('tituloSinGifs')
+    title.innerHTML='¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!';
+    
+    //Properties:
+    noFavs.classList.add('icons');
+    div1.classList.add('div1');
+    
+    //DOM:
+    div1.appendChild(noFavs);
+    div1.appendChild(title)
+    favGifsDivs.appendChild(div1);      
+}else{
+    array.forEach(element=>{
+        console.log('Imprimiendo tus favoritos')
+        //Elementos:
+        let imgDiv = document.createElement('div');
+        let img = document.createElement('img');
+        let overlay = document.createElement('div');
+        let dislike = document.createElement('img'); 
+        let download = document.createElement('img'); 
+        let maxImg = document.createElement('img');
+        let userTitle = document.createElement('h4');
+        let gifTitle = document.createElement('h5');
+        //Propiedades:
+        img.src=element;
+        imgDiv.classList.add('newDiv');
+        img.classList.add("imgBox"); //"styles/main.scss"
+        dislike.classList.add('inserted');
+        download.classList.add('inserted');
+        maxImg.classList.add('inserted');
+        dislike.src= "assets/icon-fav.svg";
+        download.src= "assets/icon-download.svg";
+        maxImg.src="assets/icon-max-normal.svg";
+        gifTitle.classList.add('userYTitle');
+        userTitle.classList.add('userYTitle')
+        listenerCambioImg(dislike,'mouseover',"assets/icon-fav-hover.svg");
+        listenerCambioImg(dislike,'mouseleave',"assets/icon-fav.svg");
+        listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
+        listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
+        listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
+        listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
+        
+        //////MOUSEOVER VIOLETA, FAV, DOWNLOAD & MAX
             imgDiv.addEventListener("mouseover",(event)=>{
                 if(event){
                     overlay.classList.add('overlayStyle');
@@ -398,21 +400,20 @@ favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
         overlay.addEventListener('mouseleave', (event)=>{
             if(event){
                 overlay.classList.remove('overlayStyle');
-                // gifTitle.classList.remove('gifTitle');
-                // userTitle.classList.remove('userTitle');
+                gifTitle.classList.remove('gifTitle');
+                userTitle.classList.remove('userTitle');
                 overlay.removeChild(dislike);
                 overlay.removeChild(download);
                 overlay.removeChild(maxImg);
             }
         })
         dislike.addEventListener('click',(event)=>{
-            console.log(event)
             let consulta = event.path[2].childNodes[0].currentSrc
-            let index = arrayFavoritos.indexOf(consulta);
-            arrayFavoritos.splice(index,1);
-            localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
+            let index = array.indexOf(consulta);
+            array.splice(index,1);
+            localStorage.setItem('favoritos', JSON.stringify(array));
             favGifsDivs.removeChild(event.path[2])
-            console.log(arrayFavoritos.length);
+            console.log(array.length);
             
         })
         //DOM
@@ -423,3 +424,22 @@ favGifsDivs.classList.add('searches'); //Mismo formato que en el search de index
     }
 }
 
+async function textoSugeridos(fnTrending, array){ //--> Sugerencias
+    await fnTrending
+    let sugeridosDiv = document.getElementById('sugeridos');
+    sugeridosDiv.classList.add('sugeridosDiv')
+    for(i=0;i<5;i++){
+        let texto = document.createElement('h3');
+        texto.setAttribute('class','textoTrending')
+        texto.innerHTML = `${array[i]}, `;
+        sugeridosDiv.appendChild(texto)
+        texto.addEventListener('click',(event)=>{
+            let currentQuery = event.path[0].innerHTML
+            printSearch(buscarGifs(currentQuery,"gifs","search",3,0),currentQuery);//
+        })
+        texto.addEventListener('mouseover',(event)=>{
+            texto.style.cursor = 'pointer';
+        })
+    }
+    sugeridosDiv.appendChild(textoTrends)
+};

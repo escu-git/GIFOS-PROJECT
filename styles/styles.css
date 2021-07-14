@@ -29,6 +29,10 @@
   margin: 25px 0 25px 0;
 }
 
+.popUp {
+  z-index: 2;
+}
+
 * {
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -270,9 +274,8 @@ body h1, body h2, body h3, body h4, body h6 {
 }
 
 .trendingContainer #img1, .trendingContainer #img2, .trendingContainer #img3 {
-  width: 200px;
-  height: 300px;
-  margin: 10px 20px;
+  width: 100px;
+  height: 200px;
 }
 
 .searches {
@@ -557,11 +560,6 @@ footer .copyright span {
   border-top: 5px black solid;
 }
 
-.img1, .img2, .img3 {
-  width: 200px;
-  height: 300px;
-}
-
 .leftBtn, .rightBtn {
   cursor: pointer;
   margin: 0 10px;
@@ -576,7 +574,7 @@ footer .copyright span {
 
 .newDiv {
   position: relative;
-  width: 40%;
+  width: 260px;
   height: 200px;
   background-color: transparent;
   padding: 0;
@@ -614,12 +612,15 @@ footer .copyright span {
 
 .userYTitle {
   display: none;
+  font-size: 16px;
 }
 
 .userTitle {
+  top: 140;
+  left: 0;
   display: block;
   position: absolute;
-  bottom: 0;
+  top: 135;
   left: 0;
   color: white;
 }
@@ -627,8 +628,6 @@ footer .copyright span {
 .gifTitle {
   display: block;
   position: absolute;
-  bottom: -10;
-  left: 0;
   color: white;
   font-weight: bold;
 }
@@ -659,8 +658,15 @@ footer .copyright span {
 }
 
 .divInfo {
-  display: block;
-  background-color: grey;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: 50px;
+      grid-template-rows: 50px;
+      grid-template-areas: "user none download like";
+  width: 48%;
+  margin: auto;
   z-index: 6;
 }
 
@@ -699,6 +705,20 @@ footer .copyright span {
 .tituloSinGifs {
   text-align: center;
   color: #5ED7C6;
+}
+
+.sugeridosDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.textoTrending {
+  margin: 0 6px;
 }
 
 @media screen and (min-width: 769px) {
@@ -792,10 +812,6 @@ footer .copyright span {
     height: 150px;
     border: 1px solid black;
   }
-  .topMenu .trendingContainer #div1, .topMenu .trendingContainer #div2, .topMenu .trendingContainer #div3 {
-    width: 243px;
-    max-width: 243px;
-  }
   .topMenu footer {
     display: -ms-grid;
     display: grid;
@@ -842,6 +858,19 @@ footer .copyright span {
     height: 100%;
     height: 20px;
     margin-right: 158px;
+  }
+  .sugeridosDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .trendingContainer #img1, .trendingContainer #img2, .trendingContainer #img3 {
+    width: 200px;
+    height: 300px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

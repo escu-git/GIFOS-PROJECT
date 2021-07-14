@@ -1,9 +1,16 @@
-let arrayMisGifos = [localStorage.getItem('id')]
+let arrayMisGifos;
+
 if(localStorage.getItem('id') === null){
-    localStorage.setItem('id',"") //Esto chequea si la key 'id' existe en localStorage, caso contrario, la crea.
+    localStorage.setItem('id',"")
 }
 
-if(arrayMisGifos.length <0){
+if(localStorage.getItem('id').length > 0){
+    arrayMisGifos = JSON.parse(localStorage.getItem('id'));
+}else{
+    arrayMisGifos = [];
+}
+
+if(arrayMisGifos.length == 0){
     console.log('Sin imagenes favoritas')
     let gifosContainer = document.getElementById('gifosGrabados')
     gifosContainer.classList.add('searches');
@@ -33,5 +40,4 @@ async function printMisGifos(gifId){
     let apiGif = await fetch(urlMisGifos);
     console.log(apiGif);
     let img = document.createElement('img');
-
 }

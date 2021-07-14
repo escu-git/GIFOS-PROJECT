@@ -19,6 +19,9 @@ const darkMode = ()=>{ //Todos los cambios al hacer dark o clear mode:
     html.classList.toggle('darkHTML');
     logoTheme.src = "assets/logo-mobile-modo-noct.svg";
     diurnoLi.innerHTML = "Modo Diurno";    
+    verMas.src="assets/CTA-ver+-modo-noc.svg";
+    listenerCambioImg(verMas,"mouseover","assets/CTA-ver+hover-modo-noc.svg");
+    listenerCambioImg(verMas,'mouseleave','assets/CTA-ver+-modo-noc.svg')
 }
 createGifosBtn.onclick= ()=>{
     window.location = "createGifos.html";
@@ -38,8 +41,15 @@ darkModeBtn.addEventListener('click',()=>{
         setDarkMode = localStorage.setItem('darkMode', null);
         logoTheme.src = "assets/logo-mobile.svg";
         diurnoLi.innerHTML = "Modo Nocturno";
+        verMas.src= 'assets/CTA-ver-mas.svg'
+    listenerCambioImg(verMas,"mouseover","assets/CTA-ver-mas-hover.svg");
+    listenerCambioImg(verMas,'mouseleave','assets/CTA-ver-mas.svg')
+    facebook.src= 'assets/icon_facebook.svg'
+    listenerCambioImg(facebook,"mouseover","assets/icon_facebook_hover.svg");
+    listenerCambioImg(facebook,"mouseleave","assets/icon_facebook.svg");
     }
 })
 if(setDarkMode === 'on') {
     darkMode();
 }
+
