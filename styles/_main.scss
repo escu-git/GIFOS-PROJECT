@@ -1,4 +1,4 @@
-//@media screen and (max-width:768px){
+
     .introGifos {
         display:flex;
         flex-wrap:nowrap;
@@ -29,6 +29,7 @@
     }
     .trendingContainer {
         background-color:$backgroundColor;
+        
         .carrouselContainer{
         display:flex;
         flex-wrap:nowrap;

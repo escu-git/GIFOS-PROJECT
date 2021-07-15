@@ -1,4 +1,3 @@
-
 let array;
 
 if(localStorage.getItem('favoritos').length > 0){

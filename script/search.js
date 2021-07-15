@@ -1,23 +1,9 @@
-//HEADER BTNS
-const logo = document.getElementById('mainLogo')
-const favoritos = document.getElementById("favs")
-const misGifos = document.getElementById("misGifos")
-const gifCreateBtn = document.getElementById("createGif")
-let searchesDiv = document.getElementById('searches');
-let darkStyle = localStorage.getItem('darkMode')
 
-//SEARCH SECTION:
-const divSearch = document.getElementById("searchContainer");
-const inputSearch = document.getElementById("search");
-const divSugerencia = document.getElementById("sugerencia");
-const cancelSearch = document.createElement('img')
 darkStyle === 'on' ? cancelSearch.src = 'assets/close-modo-noct.svg' : cancelSearch.src = 'assets/close.svg'
 cancelSearch.setAttribute('id', 'cancelSearch')
 cancelSearch.style.display='none';
 cancelSearch.style.cursor = 'pointer';
-const searchDiv = document.getElementById('searchDiv');
 
-const verMas = document.createElement('img');
 verMas.src= 'assets/CTA-ver-mas.svg'
 listenerCambioImg(verMas,"mouseover","assets\CTA-ver-mas-hover.svg");
 listenerCambioImg(verMas,'mouseleave','assets/CTA-ver-mas.svg')
@@ -74,7 +60,7 @@ verMas.addEventListener('click',(event)=>{
     printSearch(buscarGifs(currentQuery,"gifs","search",resultOffSet,0),currentQuery);
 })
 
-//////////////SEARCH GIFS FUNCTION
+//!SEARCH GIFS FUNCTION
 async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
     let urlSearch = `https://api.giphy.com/v1/${tipoRequest1}/${tipoRequest2}?api_key=${apiKey}&q=${valorDeInput}&limit=${limit}&offset=${num}&rating=g&lang=es`;
     let response = await fetch(urlSearch);
@@ -88,7 +74,7 @@ async function buscarGifs(valorDeInput,tipoRequest1,tipoRequest2,limit,num){
 
 //---------------------------------
 
-//////////////PRINT CONTENT IN DOM FUNCTION
+//!PRINT CONTENT IN DOM FUNCTION
 let imprimirDOM= (imagen, titulo, user)=>{
     //CREATE ELEMENTS:
     let newDiv = document.createElement('div'); //Div de cada IMG

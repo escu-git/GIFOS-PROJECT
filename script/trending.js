@@ -1,9 +1,5 @@
 //VARIABLES
-const apiKey ="5STmUZ3Fl2MXPNUrP5Rj8KfP5nAcf84u"; //API KEY para requests.
 
-let trendingUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&rating=g`
-let leftBtn = document.getElementById('leftBtn');
-let rightBtn = document.getElementById('rightBtn');
 rightBtn.classList.add("rightBtn");
 leftBtn.classList.add("leftBtn" );
 let valorInicial=0; // Para carousel
@@ -18,11 +14,6 @@ if(localStorage.getItem('favoritos').length > 0){
     favoritosArray = [];
 }
 
-const like = document.createElement('img'); 
-const download = document.createElement('img'); 
-const maxImg = document.createElement('img');
-const userTitle = document.createElement('h4');
-const gifTitle = document.createElement('h5');
 like.src= "assets/icon-fav.svg";
 download.src= "assets/icon-download.svg";
 maxImg.src="assets/icon-max-normal.svg";
@@ -43,16 +34,8 @@ listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
 listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
 
 download.addEventListener('click',(event)=>{
-    console.log(event.path[2].childNodes[0].currentSrc)
-    let source = event.path[2].childNodes[0].currentSrc;
-    let link = document.createElement('a');
-    link.href = source;
-    link.target ='blank'
-    link.download = 'downloadedGif.jpg'
-    link.click()
-    link.removeChild()
-        //!VER DESCARGA DEL ARCHIVO
-})
+    downloadGif(event)
+});
 
 maxImg.addEventListener('click',(event)=>{
     //Create elements:
@@ -65,9 +48,10 @@ maxImg.addEventListener('click',(event)=>{
     let gifTitleAgrandar = document.createElement('h5');
     like.style.gridArea = 'like';
     download.style.gridArea = 'download';
+    console.log(event.path[2].children)
     //Atributos:
-    // userTitleAgrandar.innerHTML=user
-    // gifTitleAgrandar.innerHTML=titulo
+    // userTitleAgrandar.innerHTML=event.path[2].children[0];
+    // gifTitleAgrandar.innerHTML=event.path[2].children[0]
     exit.src="assets/close.svg"
     exit.classList.add('exit');
     exit.addEventListener('click',(event)=>{
@@ -76,9 +60,11 @@ maxImg.addEventListener('click',(event)=>{
     divInfo.classList.add('divInfo');
     agrandarImg.classList.add('divAgrandarImg')
     img.classList.add('agrandarImg')
-    img.src=event.path[2].children[0].currentSrc 
+    img.src=event.path[2].children[0].currentSrc;
     userTitle.classList.add('userTitleAgrandar');
-    gifTitle.classList.add('gifTitleAgrandar')
+    gifTitle.classList.add('gifTitleAgrandar');
+    mainLogo.src='assets/logo-mobile.svg';
+    mainLogo.style.opacity='50%';
     //DOM:
     divInfo.appendChild(userTitleAgrandar);
     divInfo.appendChild(gifTitleAgrandar);
@@ -87,12 +73,13 @@ maxImg.addEventListener('click',(event)=>{
     agrandarImg.appendChild(img);
     agrandarImg.appendChild(exit);
     agrandarImg.appendChild(divInfo);
+    agrandarImg.appendChild(mainLogo);
     body.appendChild(agrandarImg);
 })
 
 like.addEventListener('click',(event)=>{
     array = [];
-    let consulta = event.path[2].childNodes[0].currentSrc;//ACÁ VOLCAR EL OBJETO PARA TOMAR TITULOS Y DEMÁS
+    let consulta = event.path[2].childNodes[0].currentSrc;
     if(favoritosArray.includes(consulta)){ //Si el array ya incluye el GIF, lo elimina: 
         let index = favoritosArray.indexOf(consulta);
         favoritosArray.splice(index,1);
@@ -118,7 +105,7 @@ async function api(tipoRequest1, tipoRequest2,limit,arrayToPush){
 };
 //--------------------------------
 
-const violetLayer = document.createElement('div');
+
 
 ////////DOM printing
 async function printTrending(fnTrending, array, num){    
