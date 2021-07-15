@@ -1,0 +1,94 @@
+//MIS GIFOS
+.createGifos{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    .numbersContainer{
+        display:flex;
+        margin:0 auto;
+        width:200px;
+        flex-direction:row;
+        flex-wrap: nowrap;
+        justify-content:space-between;
+        .number{
+            font-size:1em;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:$lightPurple;
+            width:32px; height:32px;
+            border:1px solid $lightPurple;
+            border-radius:100px;
+            font-weight: bolder;
+        }
+    }
+}
+.mainIcon{
+    width: 100%;
+    height:21px;
+}
+
+.mainScreen{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    border:1px solid $lightPurple;
+    width:47.8%;height:390px;
+    .showTitle{
+        font-weight:900;
+        text-transform: uppercase;
+        span{
+            color:$aquaGreen;
+            font-weight: 900;
+        }
+    }
+    .dontShowTitle{
+        display:none;
+    }
+    #mainScreenText{
+        font-size:1em;
+        font-weight: bolder;
+        text-align:center;
+    }
+}
+.showGifVideo{
+    width: 80%;
+    height:70%;
+}
+.dontShow{
+    display:none;
+}
+.nextStep{
+    font-size:1em;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:32px; height:32px;
+    border:1px solid $lightPurple;
+    border-radius:100px;
+    font-weight: bolder;
+    background-color:$lightPurple;
+    color:white;
+}
+
+.btnAction{
+    width:150px;
+    height:50px;
+    border-radius:40px;
+    border:1px solid $lightPurple;
+    background-color: transparent;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:$lightPurple;
+    font-weight: bolder;
+    font-size:0.8em;
+    margin:auto;
+    text-transform: uppercase;
+}
+
+.dontShow{
+    display:none;
+}
