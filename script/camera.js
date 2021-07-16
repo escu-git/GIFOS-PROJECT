@@ -24,20 +24,6 @@ btnAction.addEventListener('click',event=>{
     }
 })
 
-function captureCamera(callback) {
-    navigator.mediaDevices.getUserMedia({ 
-        audio: false, 
-        video: {
-            height: { max: 480 }
-        }   
-    }).then(function(camera) {
-        callback(camera);
-        console.log("Se encendió la cámara")
-    }).catch(function(error) {
-        alert('No se pudo capturar video, revisar console.error');
-        console.error(error);
-    });
-}
 
 const comenzar = () =>{
     console.log('Comenzar was clicked')
@@ -45,13 +31,20 @@ const comenzar = () =>{
     circle1.classList='nextStep'
     mainScreenTitle.innerHTML='¿Nos das acceso a tu cámara?';
     mainScreenText.innerHTML='El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO.'
-    navigator.mediaDevices.getUserMedia({ video: {height: { max: 480 }} , audio: false }).then(function(camera){
+    navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          height: { max: 480 },
+          width: { max: 480 }
+        }
+    
+      }).then(function(camera){
         mainScreenTitle.style.display='none';
         mainScreenText.style.display='none';
         gifVideo.className='showGifVideo';
         console.log('Camera is on.......')
-        document.getElementById('gifVideo').muted = true;
-        document.getElementById('gifVideo').srcObject = camera;
+        gifVideo.muted = true;
+        gifVideo.srcObject = camera;
         btnAction.innerHTML='Grabar';
         btnAction.className='btnAction';
         step = 2;
@@ -59,26 +52,5 @@ const comenzar = () =>{
 }
 
 const grabar = () =>{
-    console.log('Grabar started')
-    navigator.mediaDevices.getUserMedia({ 
-        audio: false, 
-        video: {
-            height: { max: 480 }
-        }   
-    }).then(camera=> { 
-        video.srcObject = camera;
 
-        video.play();  
-
-        recorder = RecordRTC(camera, {
-            type: 'gif',
-            frameRate: 1,
-            quality: 10,
-            width: 360,
-            hidden: 240,
-            onGifRecordingStarted: function() {
-                console.log('grabacion iniciada')
-            }
-        });
-    });
 }
