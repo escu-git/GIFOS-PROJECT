@@ -795,6 +795,7 @@ footer .copyright span {
   font-size: 0.8em;
   margin: auto;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .dontShow {
