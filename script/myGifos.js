@@ -1,11 +1,11 @@
 let arrayMisGifos;
 
-if(localStorage.getItem('id') === null){
-    localStorage.setItem('id',"")
+if(localStorage.getItem('misgifos') === null){
+    localStorage.setItem('misgifos',"")
 }
 
-if(localStorage.getItem('id').length > 0){
-    arrayMisGifos = JSON.parse(localStorage.getItem('id'));
+if(localStorage.getItem('gifos').length > 0){
+    arrayMisGifos = JSON.parse(localStorage.getItem('misgifos'));
 }else{
     arrayMisGifos = [];
 }
@@ -29,14 +29,13 @@ if(arrayMisGifos.length == 0){
     gifosContainer.appendChild(div2);
 }else{
     arrayMisGifos.forEach(element=>{
-        printMisGifos(element);
+        printMisGifos(JSON.stringelement);
 })
 }
 
 async function printMisGifos(gifId){
-    console.log(apiKey);
     console.log(gifId);
-    let urlMisGifos = `api.giphy.com/v1/gifs/gif_id=${gifId}?api_key=${apiKey}`;
+    let urlMisGifos = `https://api.giphy.com/v1/gifs?api_key=${apiKey}&ids=${gifId}`;
     let apiGif = await fetch(urlMisGifos);
     console.log(apiGif);
     let img = document.createElement('img');
