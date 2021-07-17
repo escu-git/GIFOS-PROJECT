@@ -1,5 +1,6 @@
 let arrayMisGifos;
 const gifosContainer = document.getElementById('gifosGrabados')
+gifosContainer.className='gifosGrabados';
 
 if(localStorage.getItem('misgifos') === null){
     localStorage.setItem('misgifos')
@@ -40,8 +41,7 @@ async function printMisGifos(element){
     let apiGif = await fetch(urlMisGifos);
     let gifo = await apiGif.json();
     console.log(gifo);
-    let img = document.createElement('img');
-    img.src=gifo.data.images.downsized.url;
+    let img = gifo.data.images.downsized.url;
     let title = gifo.data.title;
     let user = gifo.data.user;
     console.log(img)
@@ -49,7 +49,7 @@ async function printMisGifos(element){
     
 }
 
-let imprimirDOM= (imagen, titulo, user, id)=>{
+let imprimirMisGifos= (imagen, titulo, user, id)=>{
     //CREATE ELEMENTS:
     let newDiv = document.createElement('div'); //Div de cada IMG
     let newGif = document.createElement('img'); //IMG de cada Div
