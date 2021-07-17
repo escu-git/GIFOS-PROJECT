@@ -35,44 +35,8 @@
     align-items:center;
     justify-content:center;
     margin:auto;
-    border:1px solid $lightPurple;
+    border:1.5px solid $lightPurple;
     width:47.8%;height:390px;
-    .corner1{
-        position: absolute;
-        width:30px;
-        height:30px;
-        border-left:1px solid $aquaGreen;
-        border-top:1px solid $aquaGreen;
-        top:20px;
-        left:20px;
-    }
-    .corner2{
-        position: absolute;
-        width:30px;
-        height:30px;
-        border-right:1px solid $aquaGreen;
-        border-top:1px solid $aquaGreen;
-        top:20px;
-        right:20px;
-    }
-    .corner3{
-        position: absolute;
-        width:30px;
-        height:30px;
-        border-right:1px solid $aquaGreen;
-        border-bottom:1px solid $aquaGreen;
-        bottom:20px;
-        right:20px;
-    }
-    .corner4{
-        position: absolute;
-        width:30px;
-        height:30px;
-        border-left:1px solid $aquaGreen;
-        border-bottom:1px solid $aquaGreen;
-        bottom:20px;
-        left:20px;
-    }
     .showTitle{
         font-weight:900;
         text-transform: uppercase;

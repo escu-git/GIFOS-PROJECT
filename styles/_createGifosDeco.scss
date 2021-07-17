@@ -1,0 +1,59 @@
+.mainScreen{
+    .corner1{
+        position: absolute;
+        width:30px;
+        height:30px;
+        border-left:1.5px solid $aquaGreen;
+        border-top:1.5px solid $aquaGreen;
+        top:20px;
+        left:20px;
+    }
+    .corner2{
+        position: absolute;
+        width:30px;
+        height:30px;
+        border-right:1.5px solid $aquaGreen;
+        border-top:1.5px solid $aquaGreen;
+        top:20px;
+        right:20px;
+    }
+    .corner3{
+        position: absolute;
+        width:30px;
+        height:30px;
+        border-right:1.5px solid $aquaGreen;
+        border-bottom:1.5px solid $aquaGreen;
+        bottom:20px;
+        right:20px;
+    }
+    .corner4{
+        position: absolute;
+        width:30px;
+        height:30px;
+        border-left:1.5px solid $aquaGreen;
+        border-bottom:1.5px solid $aquaGreen;
+        bottom:20px;
+        left:20px;
+    }
+    .cameraIcon{
+        position:absolute;
+        left:-270px;
+    }
+    .cameraLight{
+        position:absolute;
+        left:-146px;
+        opacity:40%;
+    }
+    .film{
+        position:absolute;
+        right:-240px;
+        bottom:-70px;
+    }
+}
+#controlArea{
+    border-top:4px solid $lightPurple;
+    width:55%;
+    border-radius:2px 2px 0 0;
+    margin:auto;
+    padding-top:15px;
+}

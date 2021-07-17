@@ -722,49 +722,9 @@ footer .copyright span {
       -ms-flex-pack: center;
           justify-content: center;
   margin: auto;
-  border: 1px solid #572EE5;
+  border: 1.5px solid #572EE5;
   width: 47.8%;
   height: 390px;
-}
-
-.mainScreen .corner1 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-left: 1px solid #5ED7C6;
-  border-top: 1px solid #5ED7C6;
-  top: 20px;
-  left: 20px;
-}
-
-.mainScreen .corner2 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-right: 1px solid #5ED7C6;
-  border-top: 1px solid #5ED7C6;
-  top: 20px;
-  right: 20px;
-}
-
-.mainScreen .corner3 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-right: 1px solid #5ED7C6;
-  border-bottom: 1px solid #5ED7C6;
-  bottom: 20px;
-  right: 20px;
-}
-
-.mainScreen .corner4 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-left: 1px solid #5ED7C6;
-  border-bottom: 1px solid #5ED7C6;
-  bottom: 20px;
-  left: 20px;
 }
 
 .mainScreen .showTitle {
@@ -865,6 +825,71 @@ footer .copyright span {
 
 .dontShow {
   display: none;
+}
+
+.mainScreen .corner1 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 1.5px solid #5ED7C6;
+  border-top: 1.5px solid #5ED7C6;
+  top: 20px;
+  left: 20px;
+}
+
+.mainScreen .corner2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-right: 1.5px solid #5ED7C6;
+  border-top: 1.5px solid #5ED7C6;
+  top: 20px;
+  right: 20px;
+}
+
+.mainScreen .corner3 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-right: 1.5px solid #5ED7C6;
+  border-bottom: 1.5px solid #5ED7C6;
+  bottom: 20px;
+  right: 20px;
+}
+
+.mainScreen .corner4 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 1.5px solid #5ED7C6;
+  border-bottom: 1.5px solid #5ED7C6;
+  bottom: 20px;
+  left: 20px;
+}
+
+.mainScreen .cameraIcon {
+  position: absolute;
+  left: -270px;
+}
+
+.mainScreen .cameraLight {
+  position: absolute;
+  left: -146px;
+  opacity: 40%;
+}
+
+.mainScreen .film {
+  position: absolute;
+  right: -240px;
+  bottom: -70px;
+}
+
+#controlArea {
+  border-top: 4px solid #572EE5;
+  width: 55%;
+  border-radius: 2px 2px 0 0;
+  margin: auto;
+  padding-top: 15px;
 }
 
 @media screen and (min-width: 769px) {
