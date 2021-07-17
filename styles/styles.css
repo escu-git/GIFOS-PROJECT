@@ -727,6 +727,46 @@ footer .copyright span {
   height: 390px;
 }
 
+.mainScreen .corner1 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 1px solid #5ED7C6;
+  border-top: 1px solid #5ED7C6;
+  top: 20px;
+  left: 20px;
+}
+
+.mainScreen .corner2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-right: 1px solid #5ED7C6;
+  border-top: 1px solid #5ED7C6;
+  top: 20px;
+  right: 20px;
+}
+
+.mainScreen .corner3 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-right: 1px solid #5ED7C6;
+  border-bottom: 1px solid #5ED7C6;
+  bottom: 20px;
+  right: 20px;
+}
+
+.mainScreen .corner4 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 1px solid #5ED7C6;
+  border-bottom: 1px solid #5ED7C6;
+  bottom: 20px;
+  left: 20px;
+}
+
 .mainScreen .showTitle {
   font-weight: 900;
   text-transform: uppercase;
