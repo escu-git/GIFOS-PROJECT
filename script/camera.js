@@ -144,7 +144,6 @@ const uploadGif = () =>{
       misgifos = JSON.parse(misgifos);
     }
     misgifos.push(gifId);
-    
     localStorage.setItem('misgifos', JSON.stringify(misgifos));
 
   })
