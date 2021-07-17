@@ -1,4 +1,5 @@
 let arrayMisGifos;
+const gifosContainer = document.getElementById('gifosGrabados')
 
 if(localStorage.getItem('misgifos') === null){
     localStorage.setItem('misgifos')
@@ -40,4 +41,7 @@ async function printMisGifos(element){
     let gifo = await apiGif.json();
     console.log(gifo);
     let img = document.createElement('img');
+    img.src=gifo.data.images.downsized.url;
+    console.log(img)
+    gifosContainer.appendChild(img)
 }
