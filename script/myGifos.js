@@ -3,7 +3,7 @@ const gifosContainer = document.getElementById('gifosGrabados')
 gifosContainer.className='gifosGrabados';
 
 if(localStorage.getItem('misgifos') === null){
-    localStorage.setItem('misgifos')
+    localStorage.setItem('misgifos',[])
 }
 
 if(localStorage.getItem('misgifos').length > 0){
