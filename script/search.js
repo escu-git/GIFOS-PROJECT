@@ -402,24 +402,4 @@ if(array.length < 1){
     }
 }
 
-async function textoSugeridos(){ //--> Sugerencias
-    let text = await trendingRequest('trending', 'searches', 5)
-    let sugeridosDiv = document.getElementById('sugeridos');
-    sugeridosDiv.classList.add('sugeridosDiv')
-    for(i=0;i<5;i++){
-        let texto = document.createElement('h3');
-        texto.setAttribute('class','textoTrending')
-        texto.innerHTML = `${text.data[i]}, `;
-        console.log(texto)
-        sugeridosDiv.appendChild(texto)
-        texto.addEventListener('click',(event)=>{
-            let currentQuery = event.path[0].innerHTML
-            printSearch(buscarGifs(currentQuery,"gifs","search",3,0),currentQuery);//
-        })
-        texto.addEventListener('mouseover',(event)=>{
-            texto.style.cursor = 'pointer';
-        })
-    }
-};
-
 textoSugeridos();
