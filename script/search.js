@@ -92,14 +92,7 @@ let imprimirDOM= (imagen, titulo, user)=>{
     newGif.src = imagen; //Trae img del array
     newGif.classList.add("imgBox"); //main.scss
     newDiv.classList.add('newDiv'); //js-styles.scss
-    gifTitle.classList.add('userYTitle');
-    userTitle.classList.add('userYTitle')
-    like.classList.add('inserted');
-    download.classList.add('inserted');
-    maxImg.classList.add('inserted');
-    like.src= "assets/icon-fav.svg";
-    download.src= "assets/icon-download.svg";
-    maxImg.src="assets/icon-max-normal.svg";
+
 
     download.addEventListener('click',(event)=>{
         console.log(event.path[2].childNodes[0].currentSrc)
@@ -291,7 +284,6 @@ async function sugerencias(){
     sugerencias.data.forEach(array =>{
         sugerenciasArray.push(array.name);
     });
-    console.log(sugerenciasArray)
     for(let i=0;i<sugerenciasArray.length;i++){
     let sugerencia = document.createElement('div');
     sugerencia.classList.add('sugerenciaDiv')
@@ -410,14 +402,15 @@ if(array.length < 1){
     }
 }
 
-async function textoSugeridos(fnTrending, array){ //--> Sugerencias
-    await fnTrending
+async function textoSugeridos(){ //--> Sugerencias
+    let text = await trendingRequest('trending', 'searches', 5)
     let sugeridosDiv = document.getElementById('sugeridos');
     sugeridosDiv.classList.add('sugeridosDiv')
     for(i=0;i<5;i++){
         let texto = document.createElement('h3');
         texto.setAttribute('class','textoTrending')
-        texto.innerHTML = `${array[i]}, `;
+        texto.innerHTML = `${text.data[i]}, `;
+        console.log(texto)
         sugeridosDiv.appendChild(texto)
         texto.addEventListener('click',(event)=>{
             let currentQuery = event.path[0].innerHTML
@@ -427,5 +420,6 @@ async function textoSugeridos(fnTrending, array){ //--> Sugerencias
             texto.style.cursor = 'pointer';
         })
     }
-    sugeridosDiv.appendChild(textoTrends)
 };
+
+textoSugeridos();

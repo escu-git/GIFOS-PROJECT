@@ -9,6 +9,14 @@ const download = document.createElement('img');
 const maxImg = document.createElement('img');
 const userTitle = document.createElement('h4');
 const gifTitle = document.createElement('h5');
+gifTitle.classList.add('userYTitle');
+userTitle.classList.add('userYTitle')
+like.classList.add('inserted');
+download.classList.add('inserted');
+maxImg.classList.add('inserted');
+like.src= "assets/icon-fav.svg";
+download.src= "assets/icon-download.svg";
+maxImg.src="assets/icon-max-normal.svg";
 
 const logo = document.getElementById('mainLogo')
 const favoritos = document.getElementById("favs")
@@ -35,6 +43,16 @@ let logoTheme =document.createElement("img");
 let createGifosBtn = document.getElementById("createGif");
 
 const violetLayer = document.createElement('div');
+
+//Trending section: 
+const trendingImgContainer = document.getElementById('trendingImgContainer');
+let agrandarImg = document.createElement('div')
+let img = document.createElement('img')
+let exit = document.createElement('img');
+let divInfo = document.createElement('div');
+let userTitleAgrandar = document.createElement('h4');
+let gifTitleAgrandar = document.createElement('h5');
+
 
 //Social media:
 const facebook = document.getElementById('facebook');

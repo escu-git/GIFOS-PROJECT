@@ -485,18 +485,6 @@ footer .copyright span {
   border-top: 5px black solid;
 }
 
-.leftBtn, .rightBtn {
-  cursor: pointer;
-  margin: 0 10px;
-}
-
-.leftBtn:hover, .rightBtn:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
 .newDiv {
   position: relative;
   width: 260px;
@@ -507,6 +495,12 @@ footer .copyright span {
 }
 
 .overlayStyle {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: absolute;
   top: 0;
   left: 0;
@@ -515,7 +509,6 @@ footer .copyright span {
   background-color: #572EE5;
   opacity: 80%;
   z-index: 2;
-  text-align: right;
 }
 
 .inserted {
@@ -543,7 +536,7 @@ footer .copyright span {
 .userTitle {
   top: 140;
   left: 0;
-  display: block;
+  display: inherit;
   position: absolute;
   top: 135;
   left: 0;
@@ -551,7 +544,7 @@ footer .copyright span {
 }
 
 .gifTitle {
-  display: block;
+  display: inherit;
   position: absolute;
   color: white;
   font-weight: bold;
@@ -651,7 +644,61 @@ footer .copyright span {
 }
 
 .textoTrending {
-  margin: 0 6px;
+  margin: 0 10px;
+  text-transform: capitalize;
+}
+
+.textoTrending:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.trendingImgContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.trendingImages {
+  width: 100%;
+  height: 100%;
+}
+
+.imageDiv {
+  position: relative;
+  width: 33%;
+  height: 200px;
+  background-color: transparent;
+  padding: 0;
+  margin: 10px 10px 10px 10px;
+}
+
+#leftBtn, #rightBtn {
+  cursor: pointer;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 15px;
+  width: 50px;
+  height: 50px;
+}
+
+#leftBtn:hover, #rightBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .createGifos {
@@ -1061,9 +1108,6 @@ footer .copyright span {
     width: 100%;
   }
   .trendingContainer .carrouselContainer .imageContainer {
-    width: 33%;
-  }
-  .trendingContainer .carrouselContainer .imageContainer #img1, .trendingContainer .carrouselContainer .imageContainer #img2, .trendingContainer .carrouselContainer .imageContainer #img3 {
     width: 100%;
   }
   .trendingContainer .carrouselContainer .divCarrousel {
