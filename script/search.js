@@ -128,12 +128,12 @@ let imprimirDOM= (imagen, titulo, user)=>{
     })
 
         //ON HOVER:
-    listenerCambioImg(like,'mouseover',"assets/icon-fav-hover.svg");
-    listenerCambioImg(like,'mouseleave',"assets/icon-fav.svg");
-    listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
-    listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
-    listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
-    listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
+    // listenerCambioImg(like,'mouseover',"assets/icon-fav-hover.svg");
+    // listenerCambioImg(like,'mouseleave',"assets/icon-fav.svg");
+    // listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
+    // listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
+    // listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
+    // listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
 
     if(arrayFavoritos.includes(imagen)){ //Si el array no incluye el gif
         console.log(imagen)

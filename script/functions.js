@@ -57,18 +57,11 @@ function listenerCambioImg(objeto,accion,imagen){
     })
 };
 
-listenerCambioImg(like,'mouseover',"assets/icon-fav-hover.svg");
-listenerCambioImg(like,'mouseleave',"assets/icon-fav.svg");
-listenerCambioImg(download,'mouseover',"assets/icon-download-hover.svg")
-listenerCambioImg(download,'mouseleave',"assets/icon-download.svg")
-listenerCambioImg(maxImg,'mouseover',"assets/icon-max-hover.svg")
-listenerCambioImg(maxImg,'mouseleave',"assets/icon-max-normal.svg")
 
-let requestType = 'gifs';
-let requestEndpoint = 'trending';
 
-const trendingRequest = async(request, endpoint,limit)=>{
-    let url = `https://api.giphy.com/v1/${request}/${endpoint}?api_key=${apiKey}&limit=${limit}&rating=g`;
+
+const trendingRequest = async(request, endpoint,limit, valorInicial)=>{
+    let url = `https://api.giphy.com/v1/${request}/${endpoint}?api_key=${apiKey}&limit=${limit}&offset=${valorInicial}&rating=g`;
     try{
         let fetched= await fetch(url);
         return await fetched.json();
@@ -85,7 +78,7 @@ async function textoSugeridos(){ //--> Sugerencias
     for(i=0;i<5;i++){
         let texto = document.createElement('h3');
         texto.setAttribute('class','textoTrending')
-        texto.innerHTML = `${text.data[i]}, `;
+        texto.innerHTML = `${text.data[i]}`;
         console.log(texto)
         sugeridosDiv.appendChild(texto)
         texto.addEventListener('click',(event)=>{
@@ -97,3 +90,4 @@ async function textoSugeridos(){ //--> Sugerencias
         })
     }
 };
+

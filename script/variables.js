@@ -12,10 +12,10 @@ const gifTitle = document.createElement('h5');
 gifTitle.classList.add('userYTitle');
 userTitle.classList.add('userYTitle')
 like.classList.add('inserted');
-download.classList.add('inserted');
+// download.classList.add('inserted');
 maxImg.classList.add('inserted');
-like.src= "assets/icon-fav.svg";
-download.src= "assets/icon-download.svg";
+// like.src= "assets/icon-fav.svg";
+// download.src= "assets/icon-download.svg";
 maxImg.src="assets/icon-max-normal.svg";
 
 const logo = document.getElementById('mainLogo')
